@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./add_post.css">
+    <link rel="icon" href="./pictures/logo.png"  sizes="48x48" type="image/x-icon">
+    <title>Add post</title>
+</head>
+<body>
+    <nav  class="nav-bar">
+        <a href="/"><img class="logo" src="./pictures/logo.png" alt="logo"></a> 
+        <ul>
+            <li><a  href="" id="nav-link">Home</a></li>
+            <li><a href="" id="nav-link">About</a></li>
+            <li><a href="" id="nav-link">Contact us</a></li>
+            <li><a href="" id="nav-link">Blog</a></li>
+            <li><img src=".\pictures\codicon_account.png" alt="account" ></li>
+        </ul>
+    </nav>
+
+    <section class="add_post_page">
+        <img src=".\pictures\Humaaans 2 Characters.png" alt="picture" style="height: 380px; width: 580px;">
+        <form id="add_post-form">
+        <!-- a form to add a post or a story publicly or privet -->
+            <div class="post_type_container">
+                <!-- The heading that will change based on the selection -->
+                <h1 id="heading">write your quote</h1>
+                
+                <div class="dropdown">
+                    <button class="dropbtn" id="post_type_button" onclick="showDropDown('post_type_list')">Quote</button>
+                    <ul class="dropdown-content" id="post_type_list">
+                        <li onclick="selectPostType('Quote')">Quote</li>
+                        <li onclick="selectPostType('Story')">Story</li>
+                    </ul>
+                </div>
+            </div>
+            <textarea id="content" name="content" placeholder="Write here..." required></textarea>
+            <div class="params">
+                <div style="display: flex; justify-content: left; align-items: center; gap: 20px;">
+                    <!-- Visibility dropdown -->
+                    <div class="dropdown">
+                        <button class="dropbtn" id="visibility_button" onclick="showDropDown('visibility_list')">Public</button>
+                        <ul class="dropdown-content" id="visibility_list">
+                            <li onclick="selectVisibility('Public')">Public</li>
+                            <li onclick="selectVisibility('Private')">Private</li>
+                        </ul>
+                    </div>
+                    <!-- Category dropdown -->
+                    <div class="dropdown">
+                        <button class="dropbtn" id="category_button"  onclick="showDropDown('category_list')" >Inspirational</button>
+                        <ul class="dropdown-content" id="category_list" style="width: 250px; column-count: 2; column-gap: 5px;">
+                            <li onclick="selectCategory('Inspirational')">Inspirational</li>
+                            <li onclick="selectCategory('Motivational')">Motivational</li>
+                            <li onclick="selectCategory('Love')">Love</li>
+                            <li onclick="selectCategory('Life')">Life</li>
+                            <li onclick="selectCategory('Friendship')">Friendship</li>
+                            <li onclick="selectCategory('Success')">Success</li>
+                            <li onclick="selectCategory('Happiness')">Happiness</li>
+                            <li onclick="selectCategory('Funny')">Funny</li>
+                            <li onclick="selectCategory('Sad')">Sad</li>
+                            <li onclick="selectCategory('Other')">Other</li>
+                        </ul>
+                    </div>
+                </div>
+                <button type="submit" id="submit-btn">Add Post</button>
+            </div>
+        </form>
+    </section>
+    <p id="contact">Need Help? Contact our support team at nr_bendifallah@esi.dz  or call us at (123) 456-7890.</p>
+</body>
+<script>
+    function updateHeading() {
+        const post_type = document.getElementById('post_type_button').innerText;
+        const heading = document.getElementById('heading');
+        if (post_type === 'Quote') {
+            heading.innerText = 'write your quote';
+        } else {
+            heading.innerText = 'write your story';
+        }
+    }
+
+    function showDropDown(list) {
+        // prevent the refresh of the page
+        event.preventDefault();
+        document.getElementById(list).classList.toggle('show');
+    }
+
+    function selectPostType(type) {
+        document.getElementById('post_type_button').innerText = type;
+        updateHeading();
+        showDropDown('post_type_list');
+    }
+
+    function selectCategory(category) {
+        document.getElementById('category_button').innerText = category;
+        showDropDown('category_list');
+    }
+
+    function selectVisibility(visibility) {
+        document.getElementById('visibility_button').innerText = visibility;
+        showDropDown('visibility_list');
+    }
+
+    document.getElementById('add_post-form').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const content = document.getElementById('content').value;
+        const visibility = document.getElementById('visibility').value;
+        const category = document.getElementById('category').value;
+        fetch('/submit-form', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                content,
+                visibility,
+                category
+            })
+        }).then(res => {
+            if (res.status === 200) {
+                window.location.href = '/';
+            } else {
+                alert('An error occurred, please try again later');
+            }
+        });
+    });
+    
+</script>
+</html>
