@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
+    <link rel="icon" href="./pictures/logo.png" sizes="48x48" type="image/x-icon">
+    <title>Quote Page</title>
+</head>
+
+<body>
+    <nav class="nav-bar">
+        <a href="../Home page/home.html"><img src="./pictures/logo.png" alt="logo"></a>
+        <ul>
+            <li><a href="" id="nav-link">Home</a></li>
+            <li><a href="" id="nav-link">About</a></li>
+            <li><a href="" id="nav-link">Contact us</a></li>
+            <li><a href="" id="nav-link">Blog</a></li>
+            <li class="categories">
+                <button id="list">Categories <img src="./pictures/mdi_chevron-down.png" alt="list"></button>
+                <div class="dropdown-content" id="test">
+                    <p>Love</p>
+                    <p>Life</p>
+                    <p>Succes</p>
+                    <p>Hapiness</p>
+                    <p>Wisdom</p>
+                    <p>Friendship</p>
+                    <p>Stories</p>
+                </div>
+            </li>
+            <li class="input-container">
+                <input type="text" placeholder="Search...">
+                <img src="./pictures/material-symbols_search.png" class="input-icon" alt="icon">
+            </li>
+            <li id="nav-link">
+                <img src="./pictures/codicon_account.png" alt="account">
+            </li>
+        </ul>
+    </nav>
+    <section class="main">
+    <section class="quote">
+        <div class="fields">
+            <a href="#"><span>Love</span> <span class="description">Love, romance, and relationships.</span></a>
+            <a href="#"><span>Life</span> <span class="description">Life, living, and experiences.</span></a>
+            <a href="#"><span>Success </span><br><span class="description">Motivational quotes for success.</span></a>
+            <a href="#"><span>Happiness</span> <br><span class="description">Quotes that bring joy.</span></a>
+            <a href="#"><span>Wisdom</span> <br><span class="description">Profound and wise sayings.</span></a>
+            <a href="#"><span>Friendship</span> <br><span class="description">Quotes about friends andcompanionship.</span></a>
+            <a href="#"><span>Stories</span> <br><span class="description">Discover some interesting stories.</span></a>
+        </div>
+    </section>
+
+    <section class="posts">
+        <div class="head">
+            <h1>Categories: <span>Love</span></h1>
+            <button><img src="./pictures/basil_add-outline.png" alt="post">Add new post</button>
+        </div>
+    
+        <div class="publication">
+            <div class="quote-posts">
+                <div class="account">
+                    <img src="./pictures/Ellipse 3.png" alt="hi">
+                    <div>
+                        <h1>Bendifallah Rami</h1>
+                        <p> Front-end developer</p>
+                    </div>
+                    <img src="./pictures/material-symbols-light_star-outline.png" alt="hi" id="like">
+                </div>
+                <p id="text">“time is money you should learn how to use it before it goes”</p>
+            </div>
+            <div class="comments">
+                <div id="com-input"></div>
+                <div id="com-display"></div>
+            </div>
+        </div>
+    
+    </section>
+</section>
+    <script>
+    document.getElementById('list').addEventListener('click', function() {
+        const list = document.querySelector('.dropdown-content');
+        if (list) {
+            list.classList.toggle('show');
+        }
+    });
+    
+    document.getElementById('like').addEventListener('click', function() {
+          const like = document.querySelector('#like');
+          like.classList.toggle.color('green');
+        })
+        </script>
+</body>
+</html>

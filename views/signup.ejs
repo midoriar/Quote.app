@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./signup.css">
+    <link rel="icon" href="./pictures/logo.png"  sizes="48x48" type="image/x-icon">
+    <title>sign-up</title>
+</head>
+<body>
+  
+      
+            <nav  class="nav-bar">
+                <a href="../Home page/home.html"><img src="./pictures/logo.png" alt="logo"></a> 
+                 <ul>
+                     <li><a  href="" id="nav-link">Home</a></li>
+                     <li><a href="" id="nav-link">About</a></li>
+                     <li><a href="" id="nav-link">Contact us</a></li>
+                     <li><a href="" id="nav-link">Blog</a></li>
+                     
+                 </ul>
+             </nav>
+
+             <section class="sign-page">
+                <img src="./pictures/Humaaans Wireframe.svg" alt="picture" class="form-image">
+                <form id="signup-form" action="/submit-form" method="post">
+                    <h3>Create account for more features</h3>
+                    <p>Everything will be free when you join us</p>
+                    <div class="fullname">
+                        <input type="text" id="first-name" placeholder="First name" required>
+                        <input type="text" id="last-name" placeholder="Last name" required>
+                    </div>
+                    <input type="email" id="email" name="email" placeholder="Email" required>
+                    <input type="password" id="password" placeholder="Password" required maxlength="12">
+                    <input type="password" id="confirm-password" placeholder="Confirm password" required maxlength="12">
+                    <p id="password-error" class="error-message"></p>
+                    <button id="submit-btn" type="submit">Create account</button>
+                    <p id="verify">Do you have an account? <span> <a href="../Login page/Login.html">Log in</a></span></p>
+                </form>
+            </section>
+            <p id="contact">Need Help? Contact our support team at nr_bendifallah@esi.dz  or call us at (123) 456-7890.</p>
+   <script>
+     document.addEventListener('DOMContentLoaded', function () {
+        const form = document.getElementById('signup-form');
+        const submitButton = document.getElementById('submit-btn');
+        const inputs = form.querySelectorAll('input[type="text"], input[type="email"], input[type="password"]');
+        const password = document.getElementById('password');
+        const confirmPassword = document.getElementById('confirm-password');
+        const passwordError = document.getElementById('password-error');
+
+        function checkInputs() {
+            let allFilled = true;
+            inputs.forEach(input => {
+                if (input.value === '') {
+                    allFilled = false;
+                }
+            });
+
+            if (allFilled && validatePassword() && confirmPassword.value === password.value) {
+                submitButton.classList.add('filled');
+            } else {
+                submitButton.classList.remove('filled');
+            }
+        }
+
+        function validatePassword() {
+            const passwordValue = password.value;
+            const hasUpperCase = /[A-Z]/.test(passwordValue);
+            const hasLowerCase = /[a-z]/.test(passwordValue);
+            const hasNumber = /[0-9]/.test(passwordValue);
+            const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(passwordValue);
+
+            if (hasUpperCase && hasLowerCase && hasNumber && hasSpecialChar) {
+                passwordError.textContent = '';
+                return true;
+            } else {
+                passwordError.textContent = 'Password must contain uppercase, lowercase, number, and special character.';
+                return false;
+            }
+        }
+
+        inputs.forEach(input => {
+            input.addEventListener('input', checkInputs);
+        });
+
+        password.addEventListener('input', validatePassword);
+        confirmPassword.addEventListener('input', checkInputs);
+
+        checkInputs();  // Initial check
+    });
+   </script>
+</body>
+</html>

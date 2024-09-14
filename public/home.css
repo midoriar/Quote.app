@@ -1,0 +1,335 @@
+@import url('https://fonts.googleapis.com/css2?family=Itim&family=Lato:wght@400;700&display=swap');
+
+:root {
+    --deep-blue: #415380;
+    --light-gray: #F2F2F2;
+    --slightly-darker-gray: #E4E4E4;
+    --pastel-green: #AAEEEE;
+    --coral-pink: #FF6F61;
+    --medium-gray: #5A5A5A;
+}
+
+body{
+    margin: 0px;
+    padding: 0px;
+    background-color: #ffffff;
+}
+
+.nav-bar {
+    display: flex;
+    padding-left: 79px;
+    justify-content: space-between;
+    padding-right: 79px;
+    border-bottom:  1px solid black;
+}
+
+
+.nav-bar ul{
+    list-style: none;
+    display: flex;
+    gap: 57px;
+    align-items: center;
+    justify-content: center;
+}
+.nav-bar ul li #nav-link {
+    font-family: 'Itim';
+    color: var(--medium-gray);
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.3s ease, text-decoration 0.3s ease;
+    position: relative; /* Required for the pseudo-element */
+}
+
+.nav-bar ul li #nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    display: block;
+    margin-top: 5px;
+    right: 0;
+    background: var(--deep-blue);
+    transition: width 0.3s ease;
+    -webkit-transition: width 0.3s ease;
+}
+
+.nav-bar ul li #nav-link:hover {
+    color: var(--deep-blue);
+    transform: scale(1.1);
+}
+
+.nav-bar ul li #nav-link:hover::after {
+    width: 100%;
+    left: 0;
+    background: var(--deep-blue); /* You can change this to any color you prefer */
+}
+
+.nav-bar ul .buttons{
+    display: flex;
+   align-items: center;
+   gap: 9px;
+}
+
+#sign-up {
+    font-family: 'Itim';
+    color: var(--light-gray);
+    background-color: var(--deep-blue);
+    padding: 11px;
+    padding-left: 30px;
+    padding-right: 30px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 18px;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    display: inline-block; /* Ensure proper block formatting context */
+}
+
+#sign-up:hover {
+    background-color: #22325a;
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+#Log-in {
+    font-family: 'Itim';
+    color: var(--medium-gray);
+    padding: 11px;
+    padding-left: 30px;
+    padding-right: 30px;
+    border: 1px solid var(--deep-blue);
+    border-radius: 10px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 18px;
+    transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    display: inline-block; /* Ensure proper block formatting context */
+}
+
+#Log-in:hover {
+    border-color: var(--deep-blue);
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+
+.nav-bar img {
+    width: 70px;
+    height: 70px;
+}
+
+.hero-text{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    padding-left: 118px;
+    padding-right: 118px;
+    padding-top: 50px;
+}
+.hero-text .asid {
+    padding: 0;
+    margin: 0;
+}
+.hero-text img {
+    width: 520px;
+    height: 380px;
+}
+
+.hero-text .asid h1{
+    color: var(--medium-gray);
+    font-size: 80px;
+    font-family: 'lato';
+    font-style: bold;
+    margin: 0px;
+    padding: 0px;
+}
+.hero-text .asid h1 span {
+    color: var(--pastel-green);
+}
+.hero-text .asid p{
+    color: var(--medium-gray);
+    font-family: 'lato';
+    font-style: bold;
+    padding-bottom: 10px;
+}
+#sign-up2 {
+    font-family: 'Itim';
+    color: var(--light-gray);
+    background-color: var(--deep-blue);
+    padding: 11px 50px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 18px;
+    margin: 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    display: inline-block;
+}
+
+#sign-up2:hover {
+    background-color:#22325a ;
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+#Log-in2 {
+    font-family: 'Itim';
+    color: var(--medium-gray);
+    padding: 11px 50px;
+    border: 1px solid var(--deep-blue);
+    border-radius: 10px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 18px;
+    margin: 5px;
+    transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    display: inline-block; /* Ensure proper block formatting context */
+}
+
+#Log-in2:hover {
+    border-color: var(--deep-blue);
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+.social-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 95px;
+    margin-top: 40px;
+}
+
+.social-link img {
+    box-shadow: none;
+    transition: box-shadow 0.3s ease, transform 0.2s ease; /* Separate transitions with commas */
+}
+
+.social-link img:hover {
+    filter: drop-shadow(0px 0px 5px rgb(165, 165, 165)); /* Adjust shadow properties */
+    transform: scale(1.1);
+}
+
+.about-us h4{
+    font-size: 58px;
+    font-family: 'itim';
+    font-weight:100;
+    padding-left: 79px;
+    color: var(--medium-gray);
+    margin: 0px;
+}.about-us .about-containers {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 0;
+    gap: 49px;
+}
+
+.about-us .container {
+    display: flex;
+    flex-direction: column;
+    width: 493px;
+    height: 216px;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--pastel-green);
+    border-radius: 12px;
+    padding: 0 27px;
+    transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s;
+}
+
+.about-us .container:hover {
+    background-color: #AAEEEE; 
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05); 
+}
+.about-us h3 {
+    font-family: 'Lato', sans-serif;
+    font-weight: 700; 
+    font-size: 30px;
+    color: #5A5A5A;
+}
+
+.about-us p {
+    font-family: 'Lato', sans-serif;
+    font-weight: 400; 
+    text-align: center;
+    margin-top: 5px;
+}
+
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--deep-blue);
+    margin: 0;
+    padding: 0;
+    font-family: 'lato';
+    padding: 0px 79px;
+    margin-top: 70px;
+}
+
+
+
+.discription{
+   display: flex;
+   color: var(--light-gray);
+   flex-wrap: wrap;
+   width: 200px;
+   
+
+}
+
+.discription img {
+    width: 79px;
+    height: 79px;
+}
+
+.discription h1{
+    font-family: 'itim';
+}
+.discription p{
+    font-family: 'lato';
+    line-height: 1.6; 
+}
+
+.contact{
+    color: var(--light-gray);
+    display: flex;
+    flex-direction: column;
+}
+.contact :first-child{
+    font-weight: 800;
+}
+
+.navigation{
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    color: var(--light-gray);
+}
+.navigation a {
+    text-decoration: none;
+    color: var(--light-gray);
+
+}
+.navigation a:hover{
+    text-decoration:underline;
+}
+
+.copyright {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    color: var(--light-gray);
+   text-align: center;
+}
+
+.copyright .social-media{
+    display: flex;
+    justify-content: space-between;
+}
+

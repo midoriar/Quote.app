@@ -1,0 +1,347 @@
+@import url('https://fonts.googleapis.com/css2?family=Itim&family=Lato:wght@400;700&display=swap');
+
+:root {
+    --deep-blue: #415380;
+    --light-gray: #F2F2F2;
+    --slightly-darker-gray: #E4E4E4;
+    --pastel-green: #AAEEEE;
+    --coral-pink: #FF6F61;
+    --medium-gray: #5A5A5A;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+    font-family: 'Itim', sans-serif;
+}
+
+.nav-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 79px;
+    border-bottom: 1px solid black;
+}
+
+.nav-bar ul {
+    list-style: none;
+    display: flex;
+    gap: 35px;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-bar ul li {
+    position: relative;
+}
+
+.nav-bar a img {
+    width: 70px;
+    height: 70px;
+}
+
+#nav-link {
+    font-family: 'Itim', sans-serif;
+    color: var(--medium-gray);
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.3s ease, text-decoration 0.3s ease;
+    position: relative;
+}
+
+#nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    display: block;
+    margin-top: 5px;
+    right: 0;
+    background: var(--deep-blue);
+    transition: width 0.3s ease;
+    -webkit-transition: width 0.3s ease;
+}
+
+#nav-link:hover {
+    color: var(--deep-blue);
+    transform: scale(1.1);
+}
+
+#nav-link:hover::after {
+    width: 100%;
+    left: 0;
+    background: var(--deep-blue);
+}
+
+.categories {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.categories button {
+    background-color: var(--deep-blue);
+    border: none;
+    border-radius: 10px;
+    color: var(--light-gray);
+    font-family: 'Itim', sans-serif;
+    display: flex;
+    align-items: center;
+    padding: 11px 15px;
+    margin: 0;
+    cursor: pointer;
+}
+
+.categories button img {
+    width: 20px;
+    height: 20px;
+    margin-left: 5px;
+}
+
+.dropdown-content {
+    display: none;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    border-radius: 5px;
+    z-index: 1;
+    width: 115px;
+    padding: 5px 0;
+}
+
+.dropdown-content.show {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+    animation: dropdownAnimation 0.3s ease forwards;
+}
+
+@keyframes dropdownAnimation {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.dropdown-content.hide {
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: dropdownHideAnimation 0.3s ease forwards;
+}
+
+@keyframes dropdownHideAnimation {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+}
+
+.dropdown-content p {
+    font-family: 'Itim', sans-serif;
+    color: var(--medium-gray);
+    padding: 10px;
+    margin: 1px;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 3px;
+    transition: background-color 0.3s;
+    background-color: var(--slightly-darker-gray);
+}
+
+.dropdown-content p:hover {
+    background-color: var(--pastel-green);
+    color: var(--light-gray);
+}
+
+.input-container {
+    position: relative;
+    width: 200px;
+    margin-right: 30px;
+}
+
+.input-container input {
+    width: 100%;
+    padding-left: 40px;
+    height: 40px;
+    border: 1px solid #ccc;
+    border-radius: 50px;
+    font-family: 'itim';
+}
+
+.input-icon {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 20px;
+    width: 20px;
+}
+
+#nav-link img {
+    width: 40px;
+    height: 40px;
+}
+
+.main{
+    display: flex;
+}
+
+.quote {
+    padding: 10px;
+    width:330px;
+    border-radius: 10px;
+}
+
+.quote .fields {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    padding: 15px;
+    gap: 20px;
+    border-right: 1px solid var(--medium-gray);
+}
+
+.quote .fields a {
+    text-decoration: none;
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 13px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 180px;
+    height: 111px;
+    padding: 10px;
+    text-align: left;
+    background-color: var(--light-gray);
+    color: var(--medium-gray);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.quote .fields a span {
+    text-align: center;
+}
+
+.quote .fields a:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+.posts{
+    width: 100%;
+
+}
+.head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px;
+}
+.head h1 {
+    font-family: "lato";
+    font-style: bold;
+    font-size: 40px;
+    color: var(--medium-gray);
+}
+.head h1 span {
+    font-family: "lato";
+    font-weight: 400;
+    font-style:normal;
+    font-size: 40px;
+    color: var(--medium-gray);
+}
+.head button {
+    background-color: var(--deep-blue);
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    color: var(--light-gray);
+    font-family: 'itim';
+    padding: 5 20px;
+    font-size: 18px;
+    transition:  transform 1s ;
+}
+.head button:hover {
+    transform: scale(1.1);
+    background-color: #273558;
+}
+
+.quote-posts{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    width: 350px;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    border-radius: 10px;
+}
+.account{
+    width: 100%;
+    max-width: max-content;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+}
+.account div{
+     width: max-content;
+     display: flex;
+     flex-direction: column;
+     align-items: start;
+     justify-content: center;
+     margin: 0px;
+}
+.account div h1{
+    margin: 0;
+    font-family: 'lato';
+    font-weight: 10000;
+    font-size: 20px;
+    font-style: bold;
+    color: var(--medium-gray);
+}
+.account div p{
+    margin: 0;
+    font-size: 13px;
+    font-weight: 300;
+    font-style: light;
+    font-family: 'lato';
+    color: var(--medium-gray);
+}
+.account #like{
+    margin-left: 40px;
+    width: 30px;
+    height: 30px;
+}
+.quote-posts #text{
+    color: var(--medium-gray);
+    font-family: 'lato';
+    font-size: 16px;
+   padding-left: 10px;
+}
+
+
+
+
+

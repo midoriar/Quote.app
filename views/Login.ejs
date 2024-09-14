@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/Login.css">
+    <link rel="icon" href="pictures/logo.png"  sizes="48x48" type="image/x-icon">
+    <title>Login</title>
+</head>
+<body>
+    
+    <nav  class="nav-bar">
+        <a href="../home.html"><img src="pictures/logo.png" alt="logo"></a> 
+         <ul>
+             <li><a  href="" id="nav-link">Home</a></li>
+             <li><a href="" id="nav-link">About</a></li>
+             <li><a href="" id="nav-link">Contact us</a></li>
+             <li><a href="" id="nav-link">Blog</a></li>
+             
+         </ul>
+     </nav>
+
+     <section class="Log-in">
+        <form id="Login-form" action="/submit-form" method="post">
+            <h3>Welcome back to our website</h3>
+            <p>you will enjoy the same experience</p>
+            <input type="email" id="email" name="email" placeholder="Email" required>
+            <input type="password" id="password" placeholder="Password" required maxlength="12">
+            <p id="password-error" class="error-message"></p>
+            <a href="../main page/main.html"><button id="submit-btn" type="submit">Create account</button></a>
+            <p id="verify">do you have and account?<span> <a href="../signup/signup.html">sign up</a></span></p>
+        </form>
+        <img src="pictures/Humaaans Wireframe.png" alt="picture" class="form-image">
+    </section>
+    <p id="contact">Need Help? Contact our support team at nr_bendifallah@esi.dz  or call us at (123) 456-7890.</p>
+
+
+
+    
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+    const form = document.getElementById('Login-form');
+    const submitButton = document.getElementById('submit-btn');
+    const inputs = form.querySelectorAll('input[type="email"], input[type="password"]');
+    const password = document.getElementById('password');
+    const passwordError = document.getElementById('password-error');
+
+    function checkInputs() {
+        let allFilled = true;
+        inputs.forEach(input => {
+            if (input.value === '') {
+                allFilled = false;
+            }
+        });
+
+        if (allFilled && validatePassword()) {
+            submitButton.classList.add('filled');
+        } else {
+            submitButton.classList.remove('filled');
+        }
+    }
+
+    function validatePassword() {
+        const passwordValue = password.value;
+        const hasUpperCase = /[A-Z]/.test(passwordValue);
+        const hasLowerCase = /[a-z]/.test(passwordValue);
+        const hasNumber = /[0-9]/.test(passwordValue);
+        const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(passwordValue);
+
+        if (hasUpperCase && hasLowerCase && hasNumber && hasSpecialChar) {
+            passwordError.textContent = '';
+            return true;
+        } else {
+            passwordError.textContent = 'Password must contain uppercase, lowercase, number, and special character.';
+            return false;
+        }
+    }
+
+    inputs.forEach(input => {
+        input.addEventListener('input', checkInputs);
+    });
+
+    password.addEventListener('input', validatePassword);
+    checkInputs();  // Initial check
+});
+</script>
+    
+</body>
+</html>
