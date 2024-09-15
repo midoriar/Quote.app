@@ -227,7 +227,7 @@ body {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     gap: 10px;
 }
-.quote #love{
+.quote #story{
     background-color: var(--pastel-green);
 }
 
@@ -243,18 +243,14 @@ body {
 .posts{
     width: 100%;
 }
-/* list */
-.posts .listp{
-    gap: 10px;
-    margin-left: 30px;
-    margin-bottom: 20px;
-}
+
 .head {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 20px;
 }
+/* love */
 .head h1 {
     font-family: "lato";
     font-style: bold;
@@ -286,168 +282,111 @@ body {
     background-color: #273558;
 }
 
-.quote-posts{
+
+.liststory{
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: start;
-    width: 350px;
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
-    padding: 10px;
-    border-radius: 10px;
-    background-color: #f2f2f2;
-}
-.account{
-    width: 100%;
-    max-width: max-content;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 10px;
-    padding: 10px;
-}
-/* listp */
-.account div{
-     width: max-content;
-     display: flex;
-     flex-direction: column;
-     align-items: start;
-     justify-content: center;
-     margin: 0px;
-}
-.account div h1{
-    margin: 0;
-    font-family: 'lato';
-    font-weight: 10000;
-    font-size: 20px;
-    font-style: bold;
-    color: var(--medium-gray);
-}
-.account div p{
-    margin: 0;
-    font-size: 13px;
-    font-weight: 300;
-    font-style: light;
-    font-family: 'lato';
-    color: var(--medium-gray);
-}
-.account #like{
-    margin-left: 40px;
-    width: 30px;
-    height: 30px;
-}
-.quote-posts #text{
-    color: var(--medium-gray);
-    font-family: 'lato';
-    font-size: 16px;
-   padding-left: 10px;
-}
-
-.publication{
-    display: flex;
     align-items: center;
     justify-content: center;
     gap: 20px;
-
 }
-input[name="comment"] {
-    border: 1px solid #ccc;
-    border-radius: 20px;
-    padding: 10px 15px;
-    background-color: #f5f5f5;
-    color: #999;
-    width: 330px;
-    height: 20px;
-    outline: none;
-}
-
-input[name="comment"]:focus {
-    border-color: #aaa;
-}
-
-.comments {
+.post-container {
+    width: 600px;
+    background-color: var(--light-gray);
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
     display: flex;
     flex-direction: column;
-    padding: 6px;
-    width: 370px;
-    gap: 7px;
-}
-
-.comments ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    background-color: #f2f2f2;
-    border-radius: 14px;
-}
-
-.comments ul li {
-    display: flex;
-  
-    align-items: flex-start;
     gap: 10px;
-    padding: 3px;
-    border-radius: 10px;
-    margin: 5px;
+    position: relative;
+    font-family: 'lato';
+}
+.contbody{
+    display: flex;
+
 }
 
-.comments ul li img {
+.profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'lato';
+}
+
+.profile-img {
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
-    height: 40px;
-    width: 40px;
 }
 
-.comments ul li .acc {
+.profile-info {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    font-family: 'Lato', sans-serif;
+}
+
+.profile-name {
+    margin: 0;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}
+
+.profile-role {
+    margin: 0;
     font-size: 14px;
+    color: #888;
 }
 
-.comments ul li .acc h1 {
-    font-size: 14px;
-    font-weight: 700;
-    margin: 0;
-    color: var(--medium-gray);
-}
-
-.comments ul li .acc p {
-    font-size: 12px;
-    color: var(--medium-gray);
-    margin: 2px 0 0 0;
-}
-
-.account img {
-    height: 50px;
-    width: 50px;
-    border-radius: 50%;
-}
-
-.account div h1 {
-    margin: 0;
-    font-family: 'Lato';
-    font-weight: 700;
-    font-size: 20px;
-    color: var(--medium-gray);
-}
-
-.account div p {
-    margin: 0;
-    font-size: 13px;
-    font-weight: 300;
-    font-family: 'Lato';
-    color: var(--medium-gray);
-}
-
-.quote-posts #text {
-    color: var(--medium-gray);
-    font-family: 'Lato';
+.post-content {
+    padding: 15px;
     font-size: 16px;
-    padding-left: 10px;
+    line-height: 1.6;
+    color: var(--medium-gray);
+    display: flex;
+    gap: 50px;
+}
+.post-content p{
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 10px;
 }
 
+.post-icons {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    align-items: center;
+    justify-content: center;
+ 
+}
 
+.material-icons {
+    color: #888;
+    cursor: pointer;
+    font-size: 36px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.material-icons:hover {
+    color: #333;
+}
+
+#like {
+    display: inline-block;
+    font-size: 24px; 
+    padding: 10px;
+    border-radius: 50px;
+    color: var(--medium-gray);
+    transition: background-color 0.3s, color 0.3s;
+    cursor: pointer;
+    background: transparent; 
+}
+
+#like.liked {
+    background-color: red;
+    color: white;
+}
 
 footer {
     display: flex;
@@ -522,3 +461,45 @@ footer {
     justify-content: space-between;
 }
 
+#back-to-top {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    display: none;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+}
+
+   /* Styling for the Back-to-Top button */
+   #back-to-top {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    display: none;
+    background-color:var(--light-gray);
+    border: 2px solid var(--deep-blue);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    text-align: center;
+}
+
+#back-to-top:hover {
+    transform: scale(1.1);
+}
+
+ #back {
+    font-size: 40px;
+    color: var(--deep-blue);
+    text-align: center;
+}
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
