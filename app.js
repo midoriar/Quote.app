@@ -8,14 +8,12 @@ app.set('view engine', 'ejs');
 
 const port = 3000;
 app.listen(port);
-console.log('listening on port 3000');
+console.log(`Server running at http://localhost:${port}`);
 
 //routes
 
 app.get('/', (req, res) => { res.render('home')})
 app.get('/signup', (req, res) => {res.render('signup')});
 app.get('/login', (req, res) => {res.render('Login')});
-app.get('/home', (req, res) => {res.render('main')});
-app.get('/story', (req, res) => {res.render('story')});
 app.post('/signup', (req, res) => {});
 app.post('/login', (req, res) => {});
