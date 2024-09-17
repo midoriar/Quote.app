@@ -1,0 +1,401 @@
+@import url('https://fonts.googleapis.com/css2?family=Itim&family=Lato:wght@400;700&display=swap');
+
+:root {
+    --deep-blue: #415380;
+    --light-gray: #F2F2F2;
+    --slightly-darker-gray: #E4E4E4;
+    --pastel-green: #AAEEEE;
+    --coral-pink: #FF6F61;
+    --medium-gray: #5A5A5A;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+    font-family: 'Itim', sans-serif;
+    font-family: 'Lato', sans-serif;
+    color: #333;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* Navbar */
+.nav-bar {
+    display: flex;
+    padding-left: 79px;
+    justify-content: space-between;
+    padding-right: 79px;
+    border-bottom:  1px solid black;
+    padding-block: 8px;
+}
+
+.nav-bar ul{
+    list-style: none;
+    display: flex;
+    gap: 57px;
+    align-items: center;
+    justify-content: center;
+}
+.nav-bar ul li #nav-link {
+    font-family: 'Itim';
+    color: var(--medium-gray);
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.3s ease, text-decoration 0.3s ease;
+    position: relative; 
+}
+
+.nav-bar ul li #nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    display: block;
+    margin-top: 5px;
+    right: 0;
+    background: var(--deep-blue);
+    transition: width 0.3s ease;
+    -webkit-transition: width 0.3s ease;
+}
+
+.nav-bar ul li #nav-link:hover {
+    color: var(--deep-blue);
+    transform: scale(1.1);
+}
+
+.nav-bar ul li #nav-link:hover::after {
+    width: 100%;
+    left: 0;
+    background: var(--deep-blue); 
+}
+
+.nav-bar img {
+    width: 50px;
+    height: 50px;
+}
+
+
+.user-profile img {
+    width: 40px;
+    border-radius: 50%;
+}
+
+/* Profile Section */
+.profile-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px;
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+}
+
+ .profile-section .profile-info {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+ .profile-info .profile-img {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    margin-right: 30px;
+}
+
+.profile-details h1 {
+    font-family: 'lato', sans-serif;
+    font-size: 36px;
+    color: #5A5A5A;
+}
+
+.job-title {
+    color: #999;
+}
+
+.bio {
+    margin-top: 15px;
+    color: #666;
+}
+#bio{
+    text-decoration: underline;
+    padding: 0px;
+    margin-top: 5px;
+}
+.social-links{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.social-links a {
+    margin-right: 15px;
+    color: #333;
+    text-decoration: none;
+}
+
+.social-links a:hover {
+    color: #415380;
+}
+
+.social-links i {
+    transition: color 0.3s ease;
+    font-size: 24px;
+    margin-top: 7px;
+}
+
+.social-links a:hover i {
+    color: #415380;
+}
+
+
+.profile-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.profile-actions #setting{
+    font-size: 24px;
+    text-decoration: none;
+    color: var(--medium-gray);
+}
+
+.modify-btn, .view-archive-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    font-family: 'Itim', sans-serif;
+    cursor: pointer;
+}
+
+.modify-btn {
+    background-color: #415380;
+    color: #fff;
+    transition: all 0.3s ease; 
+}
+
+.modify-btn:hover {
+    background-color: #344a6c; 
+    transform: scale(1.05); 
+}
+
+.view-archive-btn {
+    background-color: #f5f5f5;
+    color: #333;
+    border: 1px solid #ddd;
+    transition: all 0.3s ease; 
+}
+
+.view-archive-btn:hover {
+    background-color: #e0e0e0; 
+    transform: scale(1.05); 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+}
+
+
+/* Tabs */
+.tabs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+    background-color: #f5f5f5;
+}
+
+.tablinks {
+    width: 50%;
+    padding: 15px 25px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Itim', sans-serif;
+    background-color: #e0e0e0;
+    color: #333;
+    text-align: center;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.tablinks.active {
+    background-color: #ffffff;
+}
+
+.tabcontent {
+    display: none;
+    padding: 20px;
+    background-color: #ffffff;
+    margin-top: -2px;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+
+
+/* Card Layout */
+/* Container for the posts */
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Space between posts */
+    justify-content: center;
+    padding: 0 20px;
+}
+
+/* Each post */
+.quote-posts {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    flex: 1 1 30%; /* Adjust to 30% width for 3 posts in one line */
+    max-width: 350px; /* Optional: You can control the maximum width for better layout */
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #f2f2f2;
+   gap: 10px;
+}
+
+.account {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+}
+
+.account div h1 {
+    margin: 0;
+    font-family: 'Lato';
+    font-weight: 700;
+    font-size: 20px;
+    color: var(--medium-gray);
+}
+.account img{
+    width: 50px;
+    height: 50px;
+}
+
+.like-btn {
+    font-size: 18px;
+    color: gray; /* Default color (outline) */
+    cursor: pointer;
+}
+
+.like-btn.active {
+    color: red; /* Color when the star is filled */
+}
+
+
+
+
+#text {
+    color: var(--medium-gray);
+    font-family: 'Lato';
+    font-size: 16px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+/* Positioning the comment button in the bottom-right corner */
+.comment-btn {
+    position: absolute;
+    bottom: 10px; /* Adjust this to your preference */
+    right: 10px;  /* Adjust this to your preference */
+    cursor: pointer;
+    font-size: 18px;
+    color: var(--medium-gray);
+}
+
+.comment-btn i {
+    font-size: 20px;
+}
+
+.comment-btn:hover {
+    color: var(--deep-blue); /* Adds hover effect */
+}
+
+/* tabcontent */
+
+.post-container {
+    width: 600px;
+    background-color: var(--light-gray);
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    position: relative;
+    font-family: 'lato';
+}
+.contbody{
+    display: flex;
+
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'lato';
+}
+
+.profile-img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-name {
+    margin: 0;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}
+
+.profile-role {
+    margin: 0;
+    font-size: 14px;
+    color: #888;
+}
+
+.post-content {
+    padding: 15px;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--medium-gray);
+    display: flex;
+    gap: 50px;
+}
+.post-content p{
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.post-icons {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    align-items: center;
+    justify-content: center;
+ 
+}
+
+.material-icons:hover {
+    color: #333;
+}

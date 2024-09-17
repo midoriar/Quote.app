@@ -16,6 +16,7 @@ body {
     font-family: 'Itim', sans-serif;
 }
 
+
 .nav-bar {
     display: flex;
     justify-content: space-between;
@@ -196,7 +197,6 @@ body {
     width: 40px;
     height: 40px;
 }
-
 .main{
     display: flex;
     color: #5A5A5A;
@@ -268,7 +268,7 @@ body {
     font-size: 40px;
     color: var(--medium-gray);
 }
-.head a {
+.head a button {
     text-decoration: none;
     background-color: var(--deep-blue);
     border: none;
@@ -282,6 +282,7 @@ body {
     font-size: 18px;
     transition:  transform 0.5s ;
 }
+.head a{text-decoration: none;}
 .head a:hover {
     transform: scale(1.1);
     background-color: #273558;
