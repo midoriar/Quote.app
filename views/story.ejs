@@ -4,198 +4,231 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./story.css">
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="/main.css">
     <link rel="icon" href="./pictures/logo.png" sizes="48x48" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <title>Quote Page</title>
 </head>
 
 <body>
-    <nav class="nav-bar">
-        <a href="/home"><img src="./pictures/logo.png" alt="logo"></a>
-        <ul>
-            <li><a href="" id="nav-link">Home</a></li>
-            <li><a href="" id="nav-link">About</a></li>
-            <li><a href="" id="nav-link">Contact us</a></li>
-            <li><a href="" id="nav-link">Blog</a></li>
-            <li class="categories">
-                <button id="list">Categories <img src="./pictures/mdi_chevron-down.png" alt="list"></button>
-                <div class="dropdown-content" id="test">
-                    <p>Love</p>
-                    <p>Life</p>
-                    <p>Success</p>
-                    <p>Happiness</p>
-                    <p>Wisdom</p>
-                    <p>Friendship</p>
-                    <p>Stories</p>
-                </div>
-            </li>
-            <li class="input-container">
-                <input type="text" placeholder="Search...">
-                <img src="./pictures/material-symbols_search.png" class="input-icon" alt="icon">
-            </li>
-            <li id="nav-link">
-                <img src="./pictures/codicon_account.png" alt="account">
-            </li>
-        </ul>
-    </nav>
 
     <section class="main">
-        <section class="quote">
-            <a href="/main"><span>Love</span> <span>Love, romance, and relationships.</span></a>
-            <a href="#"><span>Life</span> <span>Life, living, and experiences.</span></a>
-            <a href="#"><span>Success </span><span>Motivational quotes for success.</span></a>
-            <a href="#"><span>Happiness</span> <span>Quotes that bring joy.</span></a>
-            <a href="#"><span>Wisdom</span> <span>Profound and wise sayings.</span></a>
-            <a href="#"><span>Friendship</span> <span>Quotes about friends and companionship.</span></a>
-            <a href="#" id="story"><span>Stories</span> <span>Discover some interesting stories.</span></a>
+        <section class="nav_bare_sideway">
+            <div id="upper_part">
+                <img src="pictures/logo.png" alt="logo">
+                <ul class="links_list">
+                    <li><a href="/main" class="nav-link"><i class="fa-solid fa-quote-right fa-xl" style="display: inline; width: 50px;"></i><span>Quotes</span></a></li>
+                    <li><a href="/story" class="nav-link active"><i class="fa-solid fa-book-open fa-2l" style="display: inline; width: 50px;"></i><span>Stories</span></a></li>
+                    <li><a href="" class="nav-link"><i class="fa-solid fa-magnifying-glass fa-2l" style="display: inline; width: 50px;"></i><span>Search</span></a></li>
+                    <li><a href="/saves" class="nav-link"><i class="fa-solid fa-star fa-2l" style="display: inline; width: 50px;"></i><span>Saves</span></a></li>
+                    <li><a href="" class="nav-link"><i class="fa-solid fa-fire fa-2l" style="display: inline; width: 50px;"></i><span>Trend</span></a></li>
+                </ul>
+            </div>
+            <div id="lower_part">
+                <ul class="links_list">
+                    <!-- dark/light mode icon -->
+                    <li><i class="fa-solid fa-moon fa-xl" style="display: inline;width: 50px;font-size: 30px;margin: 0 0 10px 13px; cursor: pointer;"></i></li>
+                    <li><a href="/account" class="nav-link"><i class="fa-solid fa-user fa-2l" style="display: inline; width: 50px;"></i><span>Profile</span></a></li>
+                    <li><a href="" class="nav-link"><i class="fa-solid fa-sign-out fa-2l" style="display: inline; width: 50px;"></i><span>Logout</span></a></li>
+                </ul>
+            </div>    
+
         </section>
 
         <section class="posts">
-            <div class="head">
-                <h1>Categories: <span>story</span></h1>
-                <button><img src="./pictures/basil_add-outline.png" alt="post">Add new post</button>
-            </div>
-            <div class="liststory">
-                <!-- start story -->
-                <div class="post-container">
-                    <div class="profile">
-                        <img src="./pictures/Ellipse 3.png" alt="Profile Picture" class="profile-img">
-                        <div class="profile-info">
-                            <h3 class="profile-name">Bendifallah Rami</h3>
-                            <p class="profile-role">front-end developer</p>
-                        </div>
+            <!-- a section with: 1_ a text 'Every story can be helpful, with a quote to summon ....', 2_ an add post link : with a button format with a plus icon -->
+            <section class="add_post">
+                <p>Every story can be helpful, with a quote to summon the courage to face the day....</p>
+                <a href="/add_post" class="add_post_link"><i class="fa-solid fa-plus fa-2l"></i><span>Add new post</span></a>
+            </section>
+            <!-- a post should have: 1_ at top : "user info (profil img, name, profession...), tags of categories of the quote", 2_at the middle: "the quote it self", 3_at the botem: "like, comment, save icons with numbers of each one"  -->
+            <section class="post">
+                <div class="user_info">
+                    <img src="pictures/Ellipse 3.png" alt="profile">
+                    <div class="user_name">
+                        <h3>John Doe</h3>
+                        <p>Software Engineer</p>
                     </div>
-                    <div class="post-content">
-                        <p>
-                            Once, there was a young boy named Sam who lived in a small village. He had a passion for art
-                            and spent countless hours practicing his craft. An old artist in the village noticed Sam's
-                            dedication and took him under his wing, teaching him the finer points of painting. Despite
-                            facing numerous rejections when he moved to the city to showcase his work, Sam never gave
-                            up. He continued to improve his skills and adapt his techniques. Eventually, his
-                            perseverance paid off, and his art was recognized and celebrated. Sam's journey was a
-                            testament to hard work and determination.
-                        </p>
-                        <div class="post-icons">
-                            <span class="material-icons" id="like">star_border</span>
-                            <span class="material-icons">chat_bubble_outline</span>
-                            <span class="material-icons">share</span>
+                    <div class="tags">
+                        <!-- categories tags as dev elements, with a tag icon for each category-->
+                        <div class="tag">
+                            <i class="fa-solid fa-tag fa-2l"></i>
+                            <span>Success</span>
                         </div>
-                    </div>
-                </div>
-                <!-- end story -->
-                <!-- start story -->
-                <div class="post-container">
-                    <div class="profile">
-                        <img src="./pictures/Ellipse 3.png" alt="Profile Picture" class="profile-img">
-                        <div class="profile-info">
-                            <h3 class="profile-name">Bendifallah Rami</h3>
-                            <p class="profile-role">front-end developer</p>
+                        <div class="tag">
+                            <i class="fa-solid fa-tag fa-2l"></i>
+                            <span>Life</span>
                         </div>
-                    </div>
-                    <div class="post-content">
-                        <p>
-                            Once, there was a young boy named Sam who lived in a small village. He had a passion for art
-                            and spent countless hours practicing his craft. An old artist in the village noticed Sam's
-                            dedication and took him under his wing, teaching him the finer points of painting. Despite
-                            facing numerous rejections when he moved to the city to showcase his work, Sam never gave
-                            up. He continued to improve his skills and adapt his techniques. Eventually, his
-                            perseverance paid off, and his art was recognized and celebrated. Sam's journey was a
-                            testament to hard work and determination.
-                        </p>
-                        <div class="post-icons">
-                            <span class="material-icons" id="like">star_border</span>
-                            <span class="material-icons">chat_bubble_outline</span>
-                            <span class="material-icons">share</span>
+                        <div class="tag">
+                            <i class="fa-solid fa-tag fa-2l"></i>
+                            <span>Wisdom</span>
                         </div>
                     </div>
                 </div>
-                <!-- end story -->
-                <!-- Additional stories can go here... -->
-            </div>
+                <div class="quote">
+                    <p>There was once a farmer who planted bamboo seeds. Every day, he watered them, tended to the soil, and waited for the bamboo to sprout. But for five long years, nothing appeared. His neighbors laughed and called him foolish for believing in something that showed no signs of life.
+
+                        But the farmer persisted. He kept watering the seeds every day without fail. In the fifth year, something extraordinary happened. The bamboo shot up, growing 90 feet in just six weeks.
+                        
+                        Success, like the bamboo, often takes time to manifest. You may not see immediate results, but with persistence, growth can happen rapidly when the time is right.</p>
+                </div>
+                <div class="actions">
+                    <div class="like active">
+                        <i class="fa-solid fa-heart fa-2l" id="like"></i>
+                        <span>12</span>
+                    </div>
+                    <div class="comment">
+                        <i class="fa-solid fa-comment fa-2l"></i>
+                        <span>3</span>
+                    </div>
+                    <div class="save">
+                        <!-- <i class="fa-solid fa-bookmark fa-2l"></i> -->
+                         <!-- empty bookmark icon -->
+                        <i class="fa-regular fa-bookmark fa-2l"></i>
+                        <span>5</span>
+                    </div>
+                </div>
+            </section>
+            <section class="post">
+                <div class="user_info">
+                    <img src="pictures/Ellipse 3.png" alt="profile">
+                    <div class="user_name">
+                        <h3>John Doe</h3>
+                        <p>Software Engineer</p>
+                    </div>
+                    <div class="tags">
+                        <!-- categories tags as dev elements, with a tag icon for each category-->
+                        <div class="tag">
+                            <i class="fa-solid fa-tag fa-2l"></i>
+                            <span>Life</span>
+                        </div>
+                        <div class="tag">
+                            <i class="fa-solid fa-tag fa-2l"></i>
+                            <span>Wisdom</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="quote">
+                    <p>Maya had always been afraid of water. At the age of 10, she could barely dip her toes in the pool without feeling terrified. But one summer, she decided that enough was enough. She wanted to swim like the other kids, so she started taking lessons.
+
+                        The first few weeks were hard. She struggled with floating, panicked when she couldn’t touch the bottom, and often cried in frustration. But her coach kept encouraging her, and Maya pushed through her fear, focusing on small improvements.
+                        
+                        By the end of the summer, Maya not only learned to swim, but she also won a race at her local pool. She realized that conquering her fear was her biggest success, and the skills she gained were a bonus.</p>
+                </div>
+                <div class="actions">
+                    <div class="like active">
+                        <i class="fa-solid fa-heart fa-2l" id="like"></i>
+                        <span>1.5k</span>
+                    </div>
+                    <div class="comment">
+                        <i class="fa-solid fa-comment fa-2l"></i>
+                        <span>562</span>
+                    </div>
+                    <div class="save">
+                        <!-- <i class="fa-solid fa-bookmark fa-2l"></i> -->
+                         <!-- empty bookmark icon -->
+                        <i class="fa-regular fa-bookmark fa-2l"></i>
+                        <span>412</span>
+                    </div>
+                </div>
+            </section>
+            <section class="post">
+                <div class="user_info">
+                    <img src="pictures/Ellipse 3.png" alt="profile">
+                    <div class="user_name">
+                        <h3>John Doe</h3>
+                        <p>Software Engineer</p>
+                    </div>
+                    <div class="tags">
+                        <!-- categories tags as dev elements, with a tag icon for each category-->
+                        <div class="tag">
+                            <i class="fa-solid fa-tag fa-2l"></i>
+                            <span>Success</span>
+                        </div>
+                        <div class="tag">
+                            <i class="fa-solid fa-tag fa-2l"></i>
+                            <span>Life</span>
+                        </div>
+                        <div class="tag">
+                            <i class="fa-solid fa-tag fa-2l"></i>
+                            <span>Wisdom</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="quote">
+                    <p>Liam was passionate about painting, but no matter how much effort he put into his work, he couldn't sell his art. For years, gallery owners rejected him, and he struggled to make ends meet. Friends and family suggested he should give up and find a "real" job, but Liam believed in his talent.
+
+                        He decided to upload his work online, hoping to reach a wider audience. Slowly but surely, people began to notice. A small blog featured his paintings, which led to an invitation to an international art fair. One day, a major art collector purchased several pieces, and from there, his career took off.
+                        
+                        Liam’s story proves that success isn’t always immediate. Sometimes, you have to carve your own path and trust that your hard work will eventually pay off.</p>
+                </div>
+                <div class="actions">
+                    <div class="like active">
+                        <i class="fa-solid fa-heart fa-2l" id="like"></i>
+                        <span>50</span>
+                    </div>
+                    <div class="comment">
+                        <i class="fa-solid fa-comment fa-2l"></i>
+                        <span>32</span>
+                    </div>
+                    <div class="save">
+                        <!-- <i class="fa-solid fa-bookmark fa-2l"></i> -->
+                         <!-- empty bookmark icon -->
+                        <i class="fa-regular fa-bookmark fa-2l"></i>
+                        <span>9</span>
+                    </div>
+                </div>
+            </section>
         </section>
     </section>
 
-    <!-- Footer Section -->
-    <footer>
-        <div class="discription">
-            <img src="pictures/logo.png" alt="logo">
-            <h1>Quote</h1>
-            <p>"Discover daily inspiration with our curated collection
-                of quotes. Explore, share, and find the words that move you."</p>
-        </div>
-
-        <div class="contact">
-            <p>Contact Information: </p>
-            <p>Email: nr_bendifallah@esi.dz</p>
-            <p>Phone: 0559185770</p>
-            <p>Address: Ouad smar algiers algeria </p>
-        </div>
-
-        <div class="navigation">
-            <p>Navigation Links:</p>
-            <a href="">Home</a>
-            <a href="">About us</a>
-            <a href="">Contact us</a>
-            <a href="">Blog</a>
-            <a href="">Terms of Service</a>
-            <a href="">Privacy Policy</a>
-        </div>
-
-        <div class="copyright">
-            <div class="social-media">
-                <a href=""> <img src="pictures/mdi_linkedin.png" alt="lin"></a>
-                <a href=""> <img src="pictures/mdi_instagram.png" alt="lin"></a>
-                <a href=""> <img src="pictures/Vector.png" alt="lin"></a>
-                <a href=""> <img src="pictures/facbooktor.png" alt="lin"></a>
-                <a href=""> <img src="pictures/github.png" alt="lin"></a>
-            </div>
-            <p>Subscribe to our newsletter for daily inspiration and updates.</p>
-            <br>
-            <p>© 2024 All rights reserved.</p>
-        </div>
-    </footer>
-
-    <!-- Back to Top Button -->
-    <div id="back-to-top">
-        <span class="material-icons" id="back">navigation</span>
-    </div>
-
-    <!-- JavaScript Section -->
+    
     <script>
-       document.getElementById('list').addEventListener('click', function () {
-    const list = document.querySelector('.dropdown-content');
-    if (list) {
-        list.classList.toggle('show');
+        // function to switch between dark and light mode
+        function switchThemeMode() {
+            // get the body element
+            let body = document.querySelector('body');
+            // check if the body has the dark class
+            if (body.classList.contains('dark')) {
+                // remove the dark class
+                body.classList.remove('dark');
+            } else {
+                // add the dark class
+                body.classList.add('dark');
+            }
+        }
+
+        // Function to like a post
+    function likeAction(event) {
+        // Get the like icon
+        let like = event.currentTarget.querySelector('i');
+        // Toggle the fa-solid/regular icon
+        like.classList.toggle('fa-solid');
+        like.classList.toggle('fa-regular');
     }
-});
 
-const likeButton = document.getElementById('like');
-
-likeButton.addEventListener('click', function () {
-    likeButton.classList.toggle('liked');
-});
-
-const backToTopButton = document.getElementById('back-to-top');
-window.onscroll = function () {
-    if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-        backToTopButton.style.display = "block";
-    } else {
-        backToTopButton.style.display = "none";
+    // Function to save a post
+    function saveAction(event) {
+        // Get the save icon
+        let save = event.currentTarget.querySelector('i');
+        // Toggle the fa-solid/regular icon
+        save.classList.toggle('fa-solid');
+        save.classList.toggle('fa-regular');
     }
-};
 
-backToTopButton.addEventListener('click', function () {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
+    // Add event listeners to all like and save icons
+    document.addEventListener('DOMContentLoaded', function() {
+        // Add event listener to like icons
+        document.querySelectorAll('.like').forEach(function(likeElement) {
+            likeElement.addEventListener('click', likeAction);
+        });
+
+        // Add event listener to save icons
+        document.querySelectorAll('.save').forEach(function(saveElement) {
+            saveElement.addEventListener('click', saveAction);
+        });
     });
-});
-
-
     </script>
-
 </body>
 
 </html>
