@@ -19,5 +19,6 @@ app.get('/add_post', (req, res) => {res.render('add_post')});
 app.get('/main', (req, res) => {res.render('main')});
 app.get('/story', (req, res) => {res.render('story')});
 app.get('/saves', (req, res) => {res.render('saves')});
+app.get('/account', (req, res) => {res.render('account')});
 app.post('/signup', (req, res) => {});
 app.post('/login', (req, res) => {});

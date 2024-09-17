@@ -26,6 +26,7 @@ body {
     font-family: 'Itim', sans-serif;
 }
 
+
 .main{
     display: flex;
     flex-direction: row;
@@ -118,6 +119,7 @@ body {
     margin: 0 0 0 -40px;
 }
 
+
 .links_list li{
     display: flex;
     justify-content: space-between;
@@ -129,7 +131,6 @@ body {
 
 #lower_part{
     padding: 20px;
-    
 }
 
 /* posts section */
