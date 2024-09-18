@@ -71,11 +71,11 @@ body{
 
 .sign-page {
     display: flex;
-    justify-content: center;
-    gap: 200px;
+    justify-content: space-around;
     align-items: center;
-    margin: 79px;
-    width: fit-content;
+    margin: 0 auto;
+    padding: 50px;
+    margin: 0;
 }
 
 .sign-page h3 {
@@ -83,6 +83,10 @@ body{
     color: var(--medium-gray);
     margin-bottom: 10px;
     font-family: 'Lato', sans-serif;
+}
+.error-message {
+    color: red;
+    font-size: 0.9rem;
 }
 
 .sign-page p {
@@ -127,6 +131,9 @@ form {
     font-size: 14px;
     background-color: #f1f1f1;
     display: flex;
+}
+.sign-page input[type="email"]{
+    margin-bottom: 0px;
 }
 
 .sign-page button {

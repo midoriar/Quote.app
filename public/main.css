@@ -9,518 +9,293 @@
     --medium-gray: #5A5A5A;
 }
 
+body.dark {
+    /* Dark mode colors */
+    --deep-blue: #273761;
+    --light-gray: #0e0e0e;
+    --slightly-darker-gray: #1d1d1d;
+    --pastel-green: #56a993;
+    --coral-pink: #D9534F;
+    --medium-gray: #b3b3b3;
+}
+
 body {
     margin: 0;
     padding: 0;
-    background-color: #ffffff;
+    background-color: var(--slightly-darker-gray);
     font-family: 'Itim', sans-serif;
 }
 
 
-.nav-bar {
+.main{
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 0 79px;
-    border-bottom: 1px solid black;
+    color: #5A5A5A;
 }
-
-.nav-bar ul {
-    list-style: none;
+.nav_bare_sideway {
     display: flex;
-    gap: 35px;
-    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    align-content: center;
+    border: #b6b6b6 solid 1px;
+    border-radius: 0 18px 18px 0;
     margin: 0;
-    padding: 0;
+    width: 180px;
+    height: 100vh;
+    background-color: rgba(170, 238, 238, 0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
 }
 
-.nav-bar ul li {
-    position: relative;
-}
-
-.nav-bar a img {
-    width: 70px;
-    height: 70px;
-}
-
-#nav-link {
-    font-family: 'Itim', sans-serif;
-    color: var(--medium-gray);
+.nav_bare_sideway a{
     text-decoration: none;
-    transition: color 0.3s ease, transform 0.3s ease, text-decoration 0.3s ease;
-    position: relative;
+    color: #5A5A5A;
+    font-size: 25px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: center;
+    color: var(--medium-gray);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    gap: 10px;
 }
 
-#nav-link::after {
+.nav_bare_sideway  a::after {
     content: '';
     position: absolute;
     width: 0;
     height: 2px;
     display: block;
-    margin-top: 5px;
-    right: 0;
+    margin-top: 25%;
+    margin-left: 10%;
     background: var(--deep-blue);
     transition: width 0.3s ease;
     -webkit-transition: width 0.3s ease;
 }
 
-#nav-link:hover {
+.nav_bare_sideway  a:hover {
     color: var(--deep-blue);
-    transform: scale(1.1);
+    transform: scale(1.05);
 }
 
-#nav-link:hover::after {
-    width: 100%;
+.nav_bare_sideway a.active {
+    color: var(--deep-blue);
+    transform: scale(1.05);
+}
+
+.nav_bare_sideway a.active::after {
+    width: 90%;
     left: 0;
     background: var(--deep-blue);
 }
 
-.categories {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.categories button {
-    background-color: var(--deep-blue);
-    border: none;
-    border-radius: 10px;
-    color: var(--light-gray);
-    font-family: 'Itim', sans-serif;
-    display: flex;
-    align-items: center;
-    padding: 11px 15px;
-    margin: 0;
-    cursor: pointer;
-}
-
-.categories button img {
-    width: 20px;
-    height: 20px;
-    margin-left: 5px;
-}
-
-.dropdown-content {
-    display: none;
-    opacity: 0;
-    transform: translateY(-20px);
-    transition: opacity 0.3s ease, transform 0.3s ease;
-    position: absolute;
-    top: 100%;
+.nav_bare_sideway  a:hover::after {
+    width: 90%;
     left: 0;
-    border-radius: 5px;
-    z-index: 1;
-    width: 115px;
-    padding: 5px 0;
+    background: var(--deep-blue); /* You can change this to any color you prefer */
 }
 
-.dropdown-content.show {
-    display: block;
-    opacity: 1;
-    transform: translateY(0);
-    animation: dropdownAnimation 0.3s ease forwards;
-}
-
-@keyframes dropdownAnimation {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.dropdown-content.hide {
-    opacity: 0;
-    transform: translateY(-20px);
-    animation: dropdownHideAnimation 0.3s ease forwards;
-}
-
-@keyframes dropdownHideAnimation {
-    from {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-    to {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-}
-
-.dropdown-content p {
-    font-family: 'Itim', sans-serif;
-    color: var(--medium-gray);
-    padding: 10px;
-    margin: 1px;
-    text-align: center;
-    cursor: pointer;
-    border-radius: 3px;
-    transition: background-color 0.3s;
-    background-color: var(--slightly-darker-gray);
-}
-
-.dropdown-content p:hover {
-    background-color: var(--pastel-green);
-    color: var(--light-gray);
-}
-
-.input-container {
-    position: relative;
-    width: 200px;
-    margin-right: 30px;
-}
-
-.input-container input {
-    width: 100%;
-    padding-left: 40px;
-    height: 40px;
-    border: 1px solid #ccc;
-    border-radius: 50px;
-    font-family: 'itim';
-}
-
-.input-icon {
-    position: absolute;
-    left: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    height: 20px;
-    width: 20px;
-}
-
-#nav-link img {
-    width: 40px;
-    height: 40px;
-}
-.main{
-    display: flex;
-    color: #5A5A5A;
-}
-.quote {
+#upper_part{
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    align-content: center;
-    border: #b6b6b6 solid 1px;
-}
-.quote a{
-    text-decoration: none;
-    color: #5A5A5A;
-    font-size: 20px;
-    display: flex;
-    flex-direction: column;
+    justify-content: space-around;
     align-items: center;
-    justify-content: center;
-    text-align: center;
-    border-radius: 13px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    height: 131px;
-    width: 209px;
-    margin: 10px;
-    background-color: var(--light-gray);
-    color: var(--medium-gray);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    gap: 10px;
-}
-.quote #love{
-    background-color: var(--pastel-green);
+    padding: 20px;
+    gap: 30px;
 }
 
-.quote  a span {
-    text-align: center;
-}
-
-.quote  a:hover {
-    transform: scale(1.05);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
-} 
-
-.posts{
-    width: 100%;
-}
-/* list */
-.posts .listp{
-    gap: 10px;
-    margin-left: 30px;
-    margin-bottom: 20px;
-}
-.head {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  padding: 20px;
-}
-.head h1 {
-    font-family: "lato";
-    font-style: bold;
-    font-size: 40px;
-    color: var(--medium-gray);
-}
-.head h1 span {
-    font-family: "lato";
-    font-weight: 400;
-    font-style:normal;
-    font-size: 40px;
-    color: var(--medium-gray);
-}
-.head a button {
-    text-decoration: none;
-    background-color: var(--deep-blue);
-    border: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 10px;
-    color: var(--light-gray);
-    font-family: 'itim';
-    padding: 3px 10px;
-    font-size: 18px;
-    transition:  transform 0.5s ;
-}
-.head a{text-decoration: none;}
-.head a:hover {
-    transform: scale(1.1);
-    background-color: #273558;
-}
-
-.quote-posts{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: start;
-    width: 400px;
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
-    padding: 10px;
-    border-radius: 10px;
-    background-color: #f2f2f2;
-}
-.account{
-    width: 100%;
-    max-width: max-content;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 10px;
-    padding: 10px;
-}
-/* listp */
-.account div{
-     width: max-content;
-     display: flex;
-     flex-direction: column;
-     align-items: start;
-     justify-content: center;
-     margin: 0px;
-}
-.account div h1{
-    margin: 0;
-    font-family: 'lato';
-    font-weight: 10000;
-    font-size: 20px;
-    font-style: bold;
-    color: var(--medium-gray);
-}
-.account div p{
-    margin: 0;
-    font-size: 13px;
-    font-weight: 300;
-    font-style: light;
-    font-family: 'lato';
-    color: var(--medium-gray);
-}
-.account #like{
-    margin-left: 40px;
-    width: 30px;
-    height: 30px;
-}
-.quote-posts #text{
-    color: var(--medium-gray);
-    font-family: 'lato';
-    font-size: 16px;
-   padding-left: 10px;
-}
-
-.publication{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    margin: 15px 0;
-}
-input[name="comment"] {
-    border: 1px solid #ccc;
-    border-radius: 20px;
-    padding: 10px 15px;
-    background-color: #f5f5f5;
-    color: #999;
-    width: 330px;
-    height: 20px;
-    outline: none;
-}
-
-input[name="comment"]:focus {
-    border-color: #aaa;
-}
-
-.comments {
-    display: flex;
-    flex-direction: column;
-    padding: 6px;
-    width: 370px;
-    gap: 7px;
-}
-
-.comments ul {
+.links_list{
     list-style: none;
-    padding: 0;
-    margin: 0;
-    background-color: #f2f2f2;
-    border-radius: 14px;
-}
-
-.comments ul li {
-    display: flex;
-  
-    align-items: flex-start;
-    gap: 10px;
-    padding: 3px;
-    border-radius: 10px;
-    margin: 5px;
-}
-
-.comments ul li img {
-    border-radius: 50%;
-    height: 40px;
-    width: 40px;
-}
-
-.comments ul li .acc {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    font-family: 'Lato', sans-serif;
-    font-size: 14px;
-}
-
-.comments ul li .acc h1 {
-    font-size: 14px;
-    font-weight: 700;
-    margin: 0;
-    color: var(--medium-gray);
-}
-
-.comments ul li .acc p {
-    font-size: 12px;
-    color: var(--medium-gray);
-    margin: 2px 0 0 0;
-}
-
-.account img {
-    height: 50px;
-    width: 50px;
-    border-radius: 50%;
-}
-
-.account div h1 {
-    margin: 0;
-    font-family: 'Lato';
-    font-weight: 700;
-    font-size: 20px;
-    color: var(--medium-gray);
-}
-
-.account div p {
-    margin: 0;
-    font-size: 13px;
-    font-weight: 300;
-    font-family: 'Lato';
-    color: var(--medium-gray);
-}
-
-.quote-posts #text {
-    color: var(--medium-gray);
-    font-family: 'Lato';
-    font-size: 16px;
-    padding-left: 10px;
+    align-content: center;
+    gap: 25px;
+    margin: 0 0 0 -40px;
 }
 
 
-
-footer {
+.links_list li{
     display: flex;
     justify-content: space-between;
+    align-items:flex-start;
+    gap: 19px;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+}
+
+#lower_part{
+    padding: 20px;
+}
+
+/* posts section */
+.posts {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    margin-left: 180px;
+    margin-top: 20px;
+    font-family: 'lato';
+    font-style: normal;
+}
+
+/* Style for the add_post section */
+.add_post {
+    display: flex;
     align-items: center;
-    background-color: var(--deep-blue);
-    margin: 0;
-    padding: 0;
-    font-family: 'lato';
-    padding: 0px 79px;
-    margin-top: 70px;
-}
-
-
-
-.discription{
-   display: flex;
-   color: var(--light-gray);
-   flex-wrap: wrap;
-   width: 200px;
-   
-
-}
-
-.discription img {
-    width: 79px;
-    height: 79px;
-}
-
-.discription h1{
-    font-family: 'itim';
-}
-.discription p{
-    font-family: 'lato';
-    line-height: 1.6; 
-}
-
-.contact{
-    color: var(--light-gray);
-    display: flex;
-    flex-direction: column;
-}
-.contact :first-child{
-    font-weight: 800;
-}
-
-.navigation{
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    color: var(--light-gray);
-}
-.navigation a {
-    text-decoration: none;
-    color: var(--light-gray);
-
-}
-.navigation a:hover{
-    text-decoration:underline;
-}
-
-.copyright {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    color: var(--light-gray);
-   text-align: center;
-}
-
-.copyright .social-media{
-    display: flex;
     justify-content: space-between;
+    width: 70%;
+    padding: 16px;
+    margin: 16px 15%;
+    background-color: var(--light-gray);
+    /* border: 1px solid var(--medium-gray); */
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+/* Style for the text inside the add_post section */
+.add_post p {
+    margin: 0;
+    font-size: 16px;
+    color: var(--medium-gray);
+}
+
+/* Style for the add post link */
+.add_post_link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--deep-blue);
+    color: var(--light-gray);
+    padding: 5px 10px;
+    gap: 10px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+/* Style for the plus icon inside the add post link */
+.add_post_link i {
+    font-size: 20px;
+}
+
+/* Hover effect for the add post link */
+.add_post_link:hover {
+    background-color: #45a049;
+}
+
+/* Style for the post section */
+.post {
+    /* border: 1px solid var(--medium-gray); */
+    border-radius: 15px;
+    padding: 16px;
+    margin: 16px 15%;
+    width: 70%;
+    background-color: var(--light-gray);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Style for the user information */
+.user_info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.user_info img {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    margin-right: 16px;
+}
+
+.user_name h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.user_name p {
+    margin: 0;
+    color: #666;
+    font-size: 14px;
+}
+
+/* Style for the tags container */
+.tags {
+    display: flex;
+    gap: 10px; /* Space between tags */
+    margin-top: 10px;
+    margin-left: auto;
+}
+
+/* Style for each tag */
+.tag {
+    display: flex;
+    align-items: center;
+    background-color: var(--pastel-green);
+    border-radius: 12px;
+    padding: 5px 10px;
+    font-size: 14px;
+    color: var(--medium-gray);
+    transition: background-color 0.3s;
+}
+
+/* Style for the tag icon */
+.tag i {
+    margin-right: 5px;
+    color: var(--medium-gray);
+}
+
+/* Style for the quote */
+.quote {
+    /* font-style: italic; */
+    color: var(--medium-gray);
+    margin-bottom: 16px;
+}
+
+/* Style for the actions */
+.actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 16px;
+}
+
+.actions div {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+.nav_bare_sideway h3{
+    margin: 0px;
+    padding: 0px;
+}
+.actions i {
+    margin-right: 8px;
+    color: var(--medium-gray);
+    transition: all 0.3s ease;
+}
+
+.actions span {
+    font-size: 14px;
+    color: #333;
+}
+
+/* Hover effects for actions */
+.actions .like:hover i,
+.actions .like.active i{
+    color: var(--coral-pink); /* Change to desired hover color */
+    scale: 1.05;
+}
+
+.actions .comment:hover i,
+.actions .save:hover i {
+    color: var(--deep-blue);
+    scale: 1.05;
+}

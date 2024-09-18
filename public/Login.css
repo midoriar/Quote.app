@@ -69,14 +69,24 @@ body{
     width: 70px;
     height: 70px;
 }
+/* main-section */
+
+.Log-in{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0 auto;
+    padding: 50px;
+}
 
 .Log-in {
-    display: flex;
-     gap: 200px;
-    align-items: center;
-    margin: 85px;
-    width: fit-content;
+    margin: 0;
 }
+.Log-in .error-message {
+    color: red;
+    font-size: 0.9rem;
+}
+
 
 .Log-in h3 {
     font-size: 24px;
@@ -109,7 +119,7 @@ form {
 
 .Log-in input[type="text"] {
     width: 100%;
-    margin-bottom: 15px;
+    margin-bottom: 1px;
     border: none;
     border-radius: 5px;
     font-size: 14px;
@@ -121,7 +131,7 @@ form {
 .Log-in input[type="email"],
 .Log-in input[type="password"] {
     padding: 16px 10px;
-    margin-bottom: 15px;
+    margin-bottom: 1px;
     border: none;
     border-radius: 5px;
     font-size: 14px;
@@ -174,7 +184,8 @@ form {
 
 .Log-in img {
     width:406 ;
-    height:400pxpx ;
+    height:400px;
+
 }
 
 #password-error {

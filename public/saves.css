@@ -11,18 +11,18 @@
 
 body.dark {
     /* Dark mode colors */
-    --deep-blue: #1B263B;
-    --light-gray: #1C1C1C;
-    --slightly-darker-gray: #2E2E2E;
-    --pastel-green: #4A7C59;
+    --deep-blue: #273761;
+    --light-gray: #0e0e0e;
+    --slightly-darker-gray: #1d1d1d;
+    --pastel-green: #56a993;
     --coral-pink: #D9534F;
-    --medium-gray: #A9A9A9;
+    --medium-gray: #b3b3b3;
 }
 
 body {
     margin: 0;
     padding: 0;
-    background-color: #ffffff;
+    background-color: var(--slightly-darker-gray);
     font-family: 'Itim', sans-serif;
 }
 
@@ -160,7 +160,7 @@ body {
 .add_post p {
     margin: 0;
     font-size: 16px;
-    color: #333;
+    color: var(--medium-gray);
 }
 
 /* Style for the add post link */

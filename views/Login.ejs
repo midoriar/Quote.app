@@ -12,78 +12,96 @@
     <nav  class="nav-bar">
         <a href="/"><img src="pictures/logo.png" alt="logo"></a> 
          <ul>
-             <li><a  href="" id="nav-link">Home</a></li>
-             <li><a href="" id="nav-link">About</a></li>
-             <li><a href="" id="nav-link">Contact us</a></li>
-             <li><a href="" id="nav-link">Blog</a></li>
-             
+             <li><a href="/" id="nav-link">Home</a></li>
+             <li><a href="/about" id="nav-link">About</a></li>
+             <li><a href="/contact" id="nav-link">Contact us</a></li>
+             <li><a href="/blog" id="nav-link">Blog</a></li>
          </ul>
      </nav>
 
      <section class="Log-in">
-        <form id="Login-form" action="/submit-form" method="post">
+        <form id="Login-form" method="post">
             <h3>Welcome back to our website</h3>
             <p>you will enjoy the same experience</p>
             <input type="email" id="email" name="email" placeholder="Email" required>
-            <input type="password" id="password" placeholder="Password" required maxlength="12">
+            <p id="email-error" class="error-message"></p>
+            <input type="password" id="password" name="password" placeholder="Password" required maxlength="12">
             <p id="password-error" class="error-message"></p>
-            <a href="/views/main.ejs"><button id="submit-btn" type="submit">Create account</button></a>
-            <p id="verify">do you have and account?<span> <a href="/signup">sign up</a></span></p>
+            <button id="submit-btn" type="submit">Log In</button>
+            <p id="verify">Don't have an account? <span><a href="/signup">Sign up</a></span></p>
         </form>
-        <img src="pictures/Humaaans Wireframe.png" alt="picture" class="form-image">
+        <div>
+            <img src="pictures/Humaaans Wireframe.png" alt="picture" class="form-image">
+        </div>
     </section>
     <p id="contact">Need Help? Contact our support team at nr_bendifallah@esi.dz  or call us at (123) 456-7890.</p>
 
-
-
-    
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-    const form = document.getElementById('Login-form');
-    const submitButton = document.getElementById('submit-btn');
-    const inputs = form.querySelectorAll('input[type="email"], input[type="password"]');
-    const password = document.getElementById('password');
-    const passwordError = document.getElementById('password-error');
+        const form = document.getElementById('Login-form');
+        const submitButton = document.getElementById('submit-btn');
+        const emailError = document.getElementById('email-error');
+        const passwordError = document.getElementById('password-error');
+        const password = document.getElementById('password');
+        const inputs = form.querySelectorAll('input[type="email"], input[type="password"]');
 
-    function checkInputs() {
-        let allFilled = true;
-        inputs.forEach(input => {
-            if (input.value === '') {
-                allFilled = false;
+        function checkInputs() {
+            let allFilled = true;
+            inputs.forEach(input => {
+                if (input.value === '') {
+                    allFilled = false;
+                }
+            });
+
+            if (allFilled) {
+                submitButton.classList.add('filled');
+            } else {
+                submitButton.classList.remove('filled');
             }
+        }
+
+        inputs.forEach(input => {
+            input.addEventListener('input', checkInputs);
         });
 
-        if (allFilled && validatePassword()) {
-            submitButton.classList.add('filled');
-        } else {
-            submitButton.classList.remove('filled');
-        }
-    }
+        checkInputs(); // Initial check to see if the button should be enabled.
 
-    function validatePassword() {
-        const passwordValue = password.value;
-        const hasUpperCase = /[A-Z]/.test(passwordValue);
-        const hasLowerCase = /[a-z]/.test(passwordValue);
-        const hasNumber = /[0-9]/.test(passwordValue);
-        const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(passwordValue);
+        // Submit form with fetch
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
 
-        if (hasUpperCase && hasLowerCase && hasNumber && hasSpecialChar) {
+            // Reset errors
+            emailError.textContent = '';
             passwordError.textContent = '';
-            return true;
-        } else {
-            passwordError.textContent = 'Password must contain uppercase, lowercase, number, and special character.';
-            return false;
-        }
-    }
 
-    inputs.forEach(input => {
-        input.addEventListener('input', checkInputs);
+            // Get form values
+            const email = form.email.value;
+            const password = form.password.value;
+
+            try {
+                const res = await fetch('/login', {
+                    method: 'POST',
+                    body: JSON.stringify({ email, password }),
+                    headers: { 'Content-Type': 'application/json' }
+                });
+
+                const data = await res.json();
+                if (data.errors) {
+                    if (data.errors.email) {
+                        emailError.textContent = data.errors.email;
+                    }
+                    if (data.errors.password) {
+                        passwordError.textContent = data.errors.password;
+                    }
+                } else if (data.user) {
+                    window.location.assign('/main');
+                }
+            } catch (err) {
+                console.error(err);
+            }
+        });
     });
-
-    password.addEventListener('input', validatePassword);
-    checkInputs();  // Initial check
-});
 </script>
-    
+
 </body>
 </html>
