@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Post = require('../models/post'); // Import the Post model
-const { type } = require('os');
+const {requireAuth, checkUser}= require('../middleware/middlewareauth')
 
 // Create a new post
 router.post('/posts', async (req, res) => {
@@ -21,7 +21,7 @@ router.post('/posts', async (req, res) => {
 });
 
 // Get all posts of a specific type
-router.get('/main/:type', async (req, res) => {
+router.get('/main/:type', requireAuth, async (req, res) => {
     try {
         if (req.params.type === 'all') {
             const posts = await Post.find();
@@ -38,16 +38,6 @@ router.get('/main/:type', async (req, res) => {
 });
 
 
-// Get a single post by ID
-router.get('/posts/:id', async (req, res) => {
-    try {
-        const post = await Post.findById(req.params.id);
-        if (!post) return res.status(404).json({ message: 'Post not found' });
-        res.json(post);
-    } catch (error) {
-        res.status(500).json({ message: error.message });
-    }
-});
 
 // Update a post
 router.put('/posts/:id', async (req, res) => {
@@ -71,5 +61,17 @@ router.delete('/posts/:id', async (req, res) => {
     }
 });
 
-// Export the router so it can be used in other files
+
+const authController = require('../controllers/authControllers');
+
+
+// GET routes for rendering signup and login pages
+router.get('/signup', authController.signup_get);
+router.get('/login', authController.login_get);
+
+// POST routes for handling signup and login logic
+router.post('/signup', authController.signup_post);
+router.post('/login', authController.login_post);
+router.get('/logout', authController.logout_get);
+
 module.exports = router;

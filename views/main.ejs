@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,6 +17,7 @@
         <section class="nav_bare_sideway">
             <div id="upper_part">
                 <img src="../../pictures/logo.png" alt="logo">
+                <h3>Welcome, <%= user.firstname %></h3>
                 <ul class="links_list">
                     <li> 
                         <% if (type === 'quote') { %>
@@ -54,7 +56,7 @@
                     <!-- dark/light mode icon -->
                     <li><i class="fa-solid fa-moon fa-xl" style="display: inline;width: 50px;font-size: 30px;margin: 0 0 10px 13px; cursor: pointer;" onclick="switchThemeMode()"></i></li>
                     <li><a href="/account" class="nav-link"><i class="fa-solid fa-user fa-2l" style="display: inline; width: 50px;"></i><span>Profile</span></a></li>
-                    <li><a href="" class="nav-link"><i class="fa-solid fa-sign-out fa-2l" style="display: inline; width: 50px;"></i><span>Logout</span></a></li>
+                    <li><a href="/logout" class="nav-link"><i class="fa-solid fa-sign-out fa-2l" style="display: inline; width: 50px;"></i><span>Logout</span></a></li>
                 </ul>
             </div>    
 
