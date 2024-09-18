@@ -15,13 +15,38 @@
     <section class="main">
         <section class="nav_bare_sideway">
             <div id="upper_part">
-                <img src="pictures/logo.png" alt="logo">
+                <img src="../../pictures/logo.png" alt="logo">
                 <ul class="links_list">
-                    <li><a href="/main" class="nav-link active"><i class="fa-solid fa-quote-right fa-xl" style="display: inline; width: 50px;"></i><span>Quotes</span></a></li>
-                    <li><a href="/story" class="nav-link"><i class="fa-solid fa-book-open fa-2l" style="display: inline; width: 50px;"></i><span>Stories</span></a></li>
-                    <li><a href="" class="nav-link"><i class="fa-solid fa-magnifying-glass fa-2l" style="display: inline; width: 50px;"></i><span>Search</span></a></li>
-                    <li><a href="/saves" class="nav-link"><i class="fa-solid fa-star fa-2l" style="display: inline; width: 50px;"></i><span>Saves</span></a></li>
-                    <li><a href="" class="nav-link"><i class="fa-solid fa-fire fa-2l" style="display: inline; width: 50px;"></i><span>Trend</span></a></li>
+                    <li> 
+                        <% if (type === 'quote') { %>
+                            <a href="/main/quote" class="nav-link active"><i class="fa-solid fa-quote-right fa-xl" style="display: inline; width: 50px;"></i><span>Quotes</span></a>
+                        <% } else { %>
+                            <a href="/main/quote" class="nav-link"><i class="fa-solid fa-quote-right fa-xl" style="display: inline; width: 50px;"></i><span>Quotes</span></a>
+                        <% } %> 
+                    </li>
+                    <li> 
+                        <% if (type === 'story') { %>
+                            <a href="/main/story" class="nav-link active"><i class="fa-solid fa-book-open fa-2l" style="display: inline; width: 50px;"></i><span>Stories</span></a></li>
+                        <% } else { %>
+                            <a href="/main/story" class="nav-link"><i class="fa-solid fa-book-open fa-2l" style="display: inline; width: 50px;"></i><span>Stories</span></a></li>
+                        <% } %> 
+                    </li>
+                        <a href="/search" class="nav-link"><i class="fa-solid fa-magnifying-glass fa-2l" style="display: inline; width: 50px;"></i><span>Search</span></a>
+                    </li>
+                    <li> 
+                        <% if (type === 'saves') { %>
+                            <a href="/main/saves" class="nav-link active"><i class="fa-solid fa-star fa-2l" style="display: inline; width: 50px;"></i><span>Saves</span></a>
+                        <% } else { %>
+                            <a href="/main/saves" class="nav-link"><i class="fa-solid fa-star fa-2l" style="display: inline; width: 50px;"></i><span>Saves</span></a>
+                        <% } %> 
+                    </li>
+                    <li> 
+                        <% if (type === 'trend') { %>
+                            <a href="/main/trend" class="nav-link active"><i class="fa-solid fa-fire fa-2l" style="display: inline; width: 50px;"></i><span>Trend</span></a>
+                        <% } else { %>
+                            <a href="/main/trend" class="nav-link"><i class="fa-solid fa-fire fa-2l" style="display: inline; width: 50px;"></i><span>Trend</span></a>
+                        <% } %> 
+                    </li>
                 </ul>
             </div>
             <div id="lower_part">
@@ -36,13 +61,57 @@
         </section>
 
         <section class="posts">
-            <!-- a section with: 1_ a text 'Every story can be helpful, with a quote to summon ....', 2_ an add post link : with a button format with a plus icon -->
             <section class="add_post">
                 <p>Every story can be helpful, with a quote to summon the courage to face the day....</p>
                 <a href="/add_post" class="add_post_link"><i class="fa-solid fa-plus fa-2l"></i><span>Add new post</span></a>
             </section>
-            <!-- a post should have: 1_ at top : "user info (profil img, name, profession...), tags of categories of the quote", 2_at the middle: "the quote it self", 3_at the botem: "like, comment, save icons with numbers of each one"  -->
-            <section class="post">
+
+            <% if (posts.length > 0) { %>
+                <% posts.forEach(post => {  %>
+
+
+                    <section class="post">
+                        <div class="user_info">
+                            <img src="../../pictures/Ellipse 3.png" alt="profile">
+                            <div class="user_name">
+                                <h3> <%= post.author %></h3>
+                                <p>Software Engineer</p>
+                            </div>
+                            <div class="tags">
+                                <% post.tags.forEach(tag => { %>
+                                    <div class="tag">
+                                        <i class="fa-solid fa-tag fa-2l"></i>
+                                        <span><%= tag %></span>
+                                    </div>
+                                <% }) %>
+                            </div>
+                        </div>
+                        <div class="quote">
+                            <p>" <%= post.content %> "</p>
+                        </div>
+                        <div class="actions">
+                            <div class="like active">
+                                <i class="fa-solid fa-heart fa-2l" id="like"></i>
+                                <span>12</span>
+                            </div>
+                            <div class="comment">
+                                <i class="fa-solid fa-comment fa-2l"></i>
+                                <span>3</span>
+                            </div>
+                            <div class="save">
+                                <i class="fa-regular fa-bookmark fa-2l"></i>
+                                <span>5</span>
+                            </div>
+                        </div>
+                    </section>
+
+                <% }) %>
+            <% } else { %>
+                <h1 class="post">No posts available! it seems that you are our first USER XD</h1>
+            <% } %>
+
+
+            <!-- <section class="post">
                 <div class="user_info">
                     <img src="pictures/Ellipse 3.png" alt="profile">
                     <div class="user_name">
@@ -50,50 +119,6 @@
                         <p>Software Engineer</p>
                     </div>
                     <div class="tags">
-                        <!-- categories tags as dev elements, with a tag icon for each category-->
-                        <div class="tag">
-                            <i class="fa-solid fa-tag fa-2l"></i>
-                            <span>Success</span>
-                        </div>
-                        <div class="tag">
-                            <i class="fa-solid fa-tag fa-2l"></i>
-                            <span>Life</span>
-                        </div>
-                        <div class="tag">
-                            <i class="fa-solid fa-tag fa-2l"></i>
-                            <span>Wisdom</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="quote">
-                    <p>“The only way to do great work is to love what you do. If you haven't found it yet, keep looking. Don't settle. As with all matters of the heart, you'll know when you find it.”</p>
-                </div>
-                <div class="actions">
-                    <div class="like active">
-                        <i class="fa-solid fa-heart fa-2l" id="like"></i>
-                        <span>12</span>
-                    </div>
-                    <div class="comment">
-                        <i class="fa-solid fa-comment fa-2l"></i>
-                        <span>3</span>
-                    </div>
-                    <div class="save">
-                        <!-- <i class="fa-solid fa-bookmark fa-2l"></i> -->
-                         <!-- empty bookmark icon -->
-                        <i class="fa-regular fa-bookmark fa-2l"></i>
-                        <span>5</span>
-                    </div>
-                </div>
-            </section>
-            <section class="post">
-                <div class="user_info">
-                    <img src="pictures/Ellipse 3.png" alt="profile">
-                    <div class="user_name">
-                        <h3>John Doe</h3>
-                        <p>Software Engineer</p>
-                    </div>
-                    <div class="tags">
-                        <!-- categories tags as dev elements, with a tag icon for each category-->
                         <div class="tag">
                             <i class="fa-solid fa-tag fa-2l"></i>
                             <span>Life</span>
@@ -121,8 +146,8 @@
                         <span>412</span>
                     </div>
                 </div>
-            </section>
-            <section class="post">
+            </section> -->
+            <!-- <section class="post">
                 <div class="user_info">
                     <img src="pictures/Ellipse 3.png" alt="profile">
                     <div class="user_name">
@@ -130,7 +155,6 @@
                         <p>Software Engineer</p>
                     </div>
                     <div class="tags">
-                        <!-- categories tags as dev elements, with a tag icon for each category-->
                         <div class="tag">
                             <i class="fa-solid fa-tag fa-2l"></i>
                             <span>Success</span>
@@ -162,12 +186,13 @@
                         <span>9</span>
                     </div>
                 </div>
-            </section>
+            </section> -->
         </section>
     </section>
 
     
     <script>
+
         // function to switch between dark and light mode
         function switchThemeMode() {
             // get the body element
@@ -199,6 +224,8 @@
         save.classList.toggle('fa-solid');
         save.classList.toggle('fa-regular');
     }
+
+    
 
     // Add event listeners to all like and save icons
     document.addEventListener('DOMContentLoaded', function() {

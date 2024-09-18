@@ -36,6 +36,7 @@
                 </div>
             </div>
             <textarea id="content" name="content" placeholder="Write here..." required></textarea>
+            <input type="text" id="author"> <!-- author -->
             <div class="params">
                 <div style="display: flex; justify-content: left; align-items: center; gap: 20px;">
                     <!-- Visibility dropdown -->
@@ -48,28 +49,30 @@
                     </div>
                     <!-- Category dropdown -->
                     <div class="dropdown">
-                        <button class="dropbtn" id="category_button"  onclick="showDropDown('category_list')" >Inspirational</button>
-                        <ul class="dropdown-content" id="category_list" style="width: 250px; column-count: 2; column-gap: 5px;">
-                            <li onclick="selectCategory('Inspirational')">Inspirational</li>
-                            <li onclick="selectCategory('Motivational')">Motivational</li>
-                            <li onclick="selectCategory('Love')">Love</li>
-                            <li onclick="selectCategory('Life')">Life</li>
-                            <li onclick="selectCategory('Friendship')">Friendship</li>
-                            <li onclick="selectCategory('Success')">Success</li>
-                            <li onclick="selectCategory('Happiness')">Happiness</li>
-                            <li onclick="selectCategory('Funny')">Funny</li>
-                            <li onclick="selectCategory('Sad')">Sad</li>
-                            <li onclick="selectCategory('Other')">Other</li>
+                        <button class="dropbtn" id="category_button"  onclick="showDropDown('category_list')" >None</button>
+                        <ul class="dropdown-content" id="category_list" style="width: 280px; column-count: 2; column-gap: 5px;">
+                            <li onclick="toggleTag('Inspirational')"><span id="Inspirational">Inspirational<span class=""></span></span></li>
+                            <li onclick="toggleTag('Motivational')"><span id="Motivational">Motivational<span class=""></span></span></li>
+                            <li onclick="toggleTag('Life')"><span id="Life">Life<span class=""></span></span></li>
+                            <li onclick="toggleTag('Love')"><span id="Love">Love<span class=""></span></span></li>
+                            <li onclick="toggleTag('Friendship')"><span id="Friendship">Friendship<span class=""></span></span></li>
+                            <li onclick="toggleTag('Success')"><span id="Success">Success<span class=""></span></span></li>
+                            <li onclick="toggleTag('Happiness')"><span id="Happiness">Happiness<span class=""></span></span></li>
+                            <li onclick="toggleTag('Sadness')"><span id="Sadness">Sadness<span class=""></span></span></li>
+                            <li onclick="toggleTag('Hope')"><span id="Hope">Hope<span class=""></span></span></li>
+                            <li onclick="toggleTag('Faith')"><span id="Faith">Faith<span class=""></span></span></li>
                         </ul>
                     </div>
                 </div>
-                <button type="submit" id="submit-btn">Add Post</button>
+                <button type="submit" id="submit">Add Post</button>
             </div>
         </form>
     </section>
     <p id="contact">Need Help? Contact our support team at nr_bendifallah@esi.dz  or call us at (123) 456-7890.</p>
 </body>
 <script>
+    let tags = [];
+
     function updateHeading() {
         const post_type = document.getElementById('post_type_button').innerText;
         const heading = document.getElementById('heading');
@@ -92,9 +95,22 @@
         showDropDown('post_type_list');
     }
 
-    function selectCategory(category) {
-        document.getElementById('category_button').innerText = category;
-        showDropDown('category_list');
+    function toggleTag(tag) {
+        // after selecting tag, the class "checked" of it's inner span will toggle
+        const tagElement = document.getElementById(tag);
+        tagElement.children[0].classList.toggle('checked');
+        // if the class "checked" is added to the tag, the button text will be changed to the tag name
+        if (tagElement.children[0].classList.contains('checked')) {
+            tags.push(tag);
+            document.getElementById('category_button').innerText = tags.join(', ');
+        } else {
+            tags = tags.filter(t => t !== tag);
+            if (tags.length === 0) {
+                document.getElementById('category_button').innerText = 'None';
+            } else {
+                document.getElementById('category_button').innerText = tags.join(', ');
+            }
+        } 
     }
 
     function selectVisibility(visibility) {
@@ -105,22 +121,24 @@
     document.getElementById('add_post-form').addEventListener('submit', (e) => {
         e.preventDefault();
         const content = document.getElementById('content').value;
-        const visibility = document.getElementById('visibility').value;
-        const category = document.getElementById('category').value;
-        fetch('/submit-form', {
+        const type = document.getElementById('post_type_button').innerText;
+        const author = document.getElementById('author').value;
+        fetch('/posts', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
+                author,
                 content,
-                visibility,
-                category
+                type,
+                tags
             })
         }).then(res => {
-            if (res.status === 200) {
-                window.location.href = '/';
+            if (res.status === 201) {
+                window.location.href = '/main/all';
             } else {
+                console.log(res);
                 alert('An error occurred, please try again later');
             }
         });

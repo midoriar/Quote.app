@@ -11,10 +11,10 @@
 
 body.dark {
     /* Dark mode colors */
-    --deep-blue: #273761;
-    --light-gray: #0e0e0e;
-    --slightly-darker-gray: #1d1d1d;
-    --pastel-green: #56a993;
+    --deep-blue: #485e94;
+    --light-gray: #212121;
+    --slightly-darker-gray: #292929;
+    --pastel-green: #418371;
     --coral-pink: #D9534F;
     --medium-gray: #b3b3b3;
 }
@@ -141,6 +141,7 @@ body {
     padding: 20px;
     margin-left: 180px;
     margin-top: 20px;
+    width: -webkit-fill-available;
 }
 
 /* Style for the add_post section */
@@ -152,9 +153,8 @@ body {
     padding: 16px;
     margin: 16px 15%;
     background-color: var(--light-gray);
-    /* border: 1px solid var(--medium-gray); */
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 8px var(--medium-gray);
 }
 
 /* Style for the text inside the add_post section */
@@ -170,7 +170,7 @@ body {
     align-items: center;
     justify-content: space-between;
     background-color: var(--deep-blue);
-    color: var(--light-gray);
+    color: var(--slightly-darker-gray);
     padding: 5px 10px;
     gap: 10px;
     border-radius: 8px;
@@ -196,7 +196,14 @@ body {
     margin: 16px 15%;
     width: 70%;
     background-color: var(--light-gray);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 8px var(--medium-gray);
+}
+
+.posts h1 {
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
+    font-family: 'Itim', sans-serif;
 }
 
 /* Style for the user information */
@@ -217,11 +224,12 @@ body {
     margin: 0;
     font-size: 18px;
     font-weight: bold;
+    color: var(--deep-blue);
 }
 
 .user_name p {
     margin: 0;
-    color: #666;
+    color: var(--medium-gray);
     font-size: 14px;
 }
 
@@ -256,6 +264,8 @@ body {
     font-style: italic;
     color: var(--medium-gray);
     margin-bottom: 16px;
+    padding: 0 16px;
+    text-align: justify;
 }
 
 /* Style for the actions */

@@ -123,7 +123,7 @@ form {
     font-family: 'Itim' , sans-serif;
 }
 
-#submit-btn {
+#submit {
     width: 121px;
     height: auto;
     padding: 10px;
@@ -136,7 +136,7 @@ form {
     transition: background-color 0.3s;
 }
 
-#submit-btn:hover {
+#submit:hover {
     background-color: #617bbb;
 }
 
@@ -238,4 +238,17 @@ form {
 
 .show {
     display: block;
+}
+
+/* add a check mark after the span of the li of the catogory list */
+#category_list li span .checked {
+    content: '';
+    display: inline-block;
+    width: 5px;
+    height: 10px;
+    margin: 0 7px;
+    border: solid black;
+    border-width: 0 2px 2px 0;
+    margin-right: 5px;
+    transform: rotate(45deg);
 }
