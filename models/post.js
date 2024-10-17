@@ -6,20 +6,20 @@ const { type } = require('os');
 const postSchema = new mongoose.Schema({
     author: {
         type: String,
-        required: true, // Author of the quote
+        required: true, 
     },
     content: {
         type: String,
-        required: true, // The actual quote text
+        required: true, 
     },
     type: {
         type: String,
-        required: true, // The type of the post (e.g., quote, story, etc.)
+        required: true, 
     },
-    tags: [String], // Array of tags related to the quote (e.g., motivation, life, etc.)
+    tags: [String], 
     createdAt: {
         type: Date,
-        default: Date.now, // Automatically add the current date and time
+        default: Date.now, 
     }
 });
 

@@ -20,7 +20,7 @@ body{
     padding-left: 79px;
     justify-content: space-between;
     padding-right: 79px;
-    border-bottom:  1px solid black;
+    border-bottom:  1px solid var(--medium-gray);
 }
 
 

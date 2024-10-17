@@ -8,7 +8,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Itim&family=Lato:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="/account.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
 <body>
@@ -17,38 +16,67 @@
     <nav class="nav-bar">
         <a href="/"><img src="pictures/logo.png" alt="logo"></a>
         <ul>
-            <li><a href="" id="nav-link">Home</a></li>
-            <li><a href="" id="nav-link">About</a></li>
-            <li><a href="" id="nav-link">Contact us</a></li>
-            <li><a href="" id="nav-link">Blog</a></li>
-            <li><a href=""><img src="pictures/Ellipse 3.png" alt=""></a></li>
+            <li><a href="/main.ejs" id="nav-link">Home</a></li>
+            <li><a href="/about" id="nav-link">About</a></li>
+            <li><a href="/contact" id="nav-link">Contact us</a></li>
+            <li><a href="/logout" id="nav-link">Log out</a></li>
+            <li><a href=""><img src="pictures/profilepic.png" alt=""></a></li>
         </ul>
     </nav>
 
     <!-- Profile Section -->
     <section class="profile-section">
         <div class="profile-info">
-            <img src="pictures/Ellipse 3.png" alt="Profile Picture" class="profile-img">
+            <img src="pictures/profilepic.png" alt="Profile Picture" class="profile-img">
             <div class="profile-details">
-                <h1>Bendifallah Rami</h1>
-                <p class="job-title">front-end developer</p>
-                <p id="bio">bio</p>
-                <p class="bio">Bendifallah Rami<br>front-end developer<br>2nd year student at ESI
-                    Algiers<br>Photographer</p>
-                <div class="social-links">
-                    <a href="#" target="_blank"><i class="fab fa-linkedin fa-2x"></i></a>
-                    <a href="#" target="_blank"><i class="fab fa-instagram fa-2x"></i></a>
-                    <a href="#" target="_blank"><i class="fab fa-github fa-2x"></i></a>
-                </div>
+                <h1>
+                    <%= user.firstname %>
+                        <%= user.lastname %>
+                </h1>
+                <p class="job-title">
+                    <%= user.job %>
+                </p>
+                <p id="bioo">bio</p>
+                <p><%- user.bio.replace(/\n/g, '<br>' ) %></p>
 
+                <div class="social-links">
+                    <a href="<%= user.linkedin %>" target="_blank"><i class="fab fa-linkedin fa-2x"></i></a>
+                    <a href="<%= user.instagram %>" target="_blank"><i class="fab fa-instagram fa-2x"></i></a>
+                    <a href="<%= user.github %>" target="_blank"><i class="fab fa-github fa-2x"></i></a>
+                </div>
             </div>
         </div>
         <div class="profile-actions">
-            <a href=""><i class="fas fa-cog" id="setting"></i></a>
-            <a href=""><button class="modify-btn">Modify the Profile</button></a>
-            <a href=""><button class="view-archive-btn">View Archive</button></a>
+            <button class="modify-btn">Modify the Profile</button>
+            <button class="view-archive-btn" id="soon">View Archive</button>
         </div>
     </section>
+
+    <!-- Edit Profile Popup -->
+    <div id="editProfilePopup" class="popup" style="display:none;">
+        <div class="popup-content">
+            <span class="close-btn" onclick="closePopup()">&times;</span>
+            <form id="editProfileForm">
+                <label for="firstname">First Name</label>
+                <input type="text" id="firstname" name="firstname" value="<%= user.firstname %>">
+
+                <label for="lastname">Last Name</label>
+                <input type="text" id="lastname" name="lastname" value="<%= user.lastname %>">
+
+                <label for="job">Job</label>
+                <input type="text" id="job" name="job" value="<%= user.job %>">
+
+                <label for="bio">Bio</label>
+                <textarea id="bio" name="bio"><%= user.bio %></textarea>
+
+                <div class="button-group">
+                    <button type="submit" class="btn done-btn">Save</button>
+                    <button type="button" class="btn cancel-btn" onclick="closePopup()">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
 
     <!-- Tabs for Quotes and Stories -->
     <div class="tabs">
@@ -102,49 +130,6 @@
                 <div><span class="comment-btn"><i class="far fa-comment"></i></span></div>
             </div>
             <!-- end -->
-            <div class="quote-posts">
-                <div class="account">
-                    <img src="./pictures/Ellipse 3.png" alt="profile">
-                    <div>
-                        <h1>Bendifallah Rami</h1>
-                        <p>Front-end developer</p>
-                    </div>
-                    <!-- Add a class instead of an id -->
-                    <i class="fa-regular fa-star like-btn"></i>
-                </div>
-                <p id="text">“Time is money; you should learn how to use it before it goes.”</p>
-                <div><span class="comment-btn"><i class="far fa-comment"></i></span></div>
-            </div>
-            <!-- end -->
-            <div class="quote-posts">
-                <div class="account">
-                    <img src="./pictures/Ellipse 3.png" alt="profile">
-                    <div>
-                        <h1>Bendifallah Rami</h1>
-                        <p>Front-end developer</p>
-                    </div>
-                    <!-- Add a class instead of an id -->
-                    <i class="fa-regular fa-star like-btn"></i>
-                </div>
-                <p id="text">“Time is money; you should learn how to use it before it goes.”</p>
-                <div><span class="comment-btn"><i class="far fa-comment"></i></span></div>
-            </div>
-            <!-- end -->
-            <div class="quote-posts">
-                <div class="account">
-                    <img src="./pictures/Ellipse 3.png" alt="profile">
-                    <div>
-                        <h1>Bendifallah Rami</h1>
-                        <p>Front-end developer</p>
-                    </div>
-                    <!-- Add a class instead of an id -->
-                    <i class="fa-regular fa-star like-btn"></i>
-                </div>
-                <p id="text">“Time is money; you should learn how to use it before it goes.”</p>
-                <div><span class="comment-btn"><i class="far fa-comment"></i></span></div>
-            </div>
-            <!-- end -->
-
 
             <!-- Additional quote cards can be duplicated here -->
         </div>
@@ -209,99 +194,152 @@
             </div>
         </div>
         <!-- end story -->
-        <!-- start story -->
-        <div class="post-container">
-            <div class="profile">
-                <img src="./pictures/Ellipse 3.png" alt="Profile Picture" class="profile-img">
-                <div class="profile-info">
-                    <h3 class="profile-name">Bendifallah Rami</h3>
-                    <p class="profile-role">front-end developer</p>
-                </div>
-            </div>
-            <div class="post-content">
-                <p>
-                    Once, there was a young boy named Sam who lived in a small village. He had a passion for art
-                    and spent countless hours practicing his craft. An old artist in the village noticed Sam's
-                    dedication and took him under his wing, teaching him the finer points of painting. Despite
-                    facing numerous rejections when he moved to the city to showcase his work, Sam never gave
-                    up. He continued to improve his skills and adapt his techniques. Eventually, his
-                    perseverance paid off, and his art was recognized and celebrated. Sam's journey was a
-                    testament to hard work and determination.
-                </p>
-                <div class="post-icons">
-                    <i class="fa-regular fa-star like-btn"></i>
 
-                    <span class="fa-regular fa-comment"></span>
-                    <span class="fa-solid fa-share"></span>
 
-                </div>
-            </div>
-        </div>
-        <!-- end story -->
-        <!-- start story -->
-        <div class="post-container">
-            <div class="profile">
-                <img src="./pictures/Ellipse 3.png" alt="Profile Picture" class="profile-img">
-                <div class="profile-info">
-                    <h3 class="profile-name">Bendifallah Rami</h3>
-                    <p class="profile-role">front-end developer</p>
-                </div>
-            </div>
-            <div class="post-content">
-                <p>
-                    Once, there was a young boy named Sam who lived in a small village. He had a passion for art
-                    and spent countless hours practicing his craft. An old artist in the village noticed Sam's
-                    dedication and took him under his wing, teaching him the finer points of painting. Despite
-                    facing numerous rejections when he moved to the city to showcase his work, Sam never gave
-                    up. He continued to improve his skills and adapt his techniques. Eventually, his
-                    perseverance paid off, and his art was recognized and celebrated. Sam's journey was a
-                    testament to hard work and determination.
-                </p>
-                <div class="post-icons">
-                    <i class="fa-regular fa-star like-btn"></i>
+        <!-- <h1 class="posts">here is you quotes</h1> -->
+        <script>
 
-                    <span class="fa-regular fa-comment"></span>
-                    <span class="fa-solid fa-share"></span>
 
-                </div>
-            </div>
-        </div>
-        <!-- end story -->
-    </div>
+            function openTab(evt, tabName) {
+                var i, tabcontent, tablinks;
 
-    <script>
-        function openTab(evt, tabName) {
-            var i, tabcontent, tablinks;
+                // Hide all tab content
+                tabcontent = document.getElementsByClassName("tabcontent");
+                for (i = 0; i < tabcontent.length; i++) {
+                    tabcontent[i].style.display = "none";
+                }
 
-            // Hide all tab content
-            tabcontent = document.getElementsByClassName("tabcontent");
-            for (i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].style.display = "none";
+                // Remove active class from all tab links
+                tablinks = document.getElementsByClassName("tablinks");
+                for (i = 0; i < tablinks.length; i++) {
+                    tablinks[i].className = tablinks[i].className.replace(" active", "");
+                }
+
+                // Show the current tab and add the active class
+                document.getElementById(tabName).style.display = "flex";
+                evt.currentTarget.className += " active";
             }
 
-            // Remove active class from all tab links
-            tablinks = document.getElementsByClassName("tablinks");
-            for (i = 0; i < tablinks.length; i++) {
-                tablinks[i].className = tablinks[i].className.replace(" active", "");
-            }
-
-            // Show the current tab and add the active class
-            document.getElementById(tabName).style.display = "flex";
-            evt.currentTarget.className += " active";
-        }
-
-        // Select all elements with the class "like-btn"
-        document.querySelectorAll('.like-btn').forEach(star => {
-            star.addEventListener('click', function () {
-                this.classList.toggle('fa-regular'); // Toggle the outline version
-                this.classList.toggle('fa-solid');   // Toggle the filled version
-                this.classList.toggle('active');     // Add the red color when filled
+            // Select all elements with the class "like-btn"
+            document.querySelectorAll('.like-btn').forEach(star => {
+                star.addEventListener('click', function () {
+                    this.classList.toggle('fa-regular'); // Toggle the outline version
+                    this.classList.toggle('fa-solid');   // Toggle the filled version
+                    this.classList.toggle('active');     // Add the red color when filled
+                });
             });
-        });
 
 
+            // Function to open and close popup
+            function openPopup() {
+                document.getElementById("editProfilePopup").style.display = "flex";
+            }
 
-    </script>
+            function closePopup() {
+                document.getElementById("editProfilePopup").style.display = "none";
+            }
+
+            // Add event listener to modify button
+            document.querySelector('.modify-btn').addEventListener('click', function (event) {
+                event.preventDefault();
+                openPopup();
+            });
+
+            // Function to handle form submission and send data to the backend using fetch
+            document.getElementById('editProfileForm').addEventListener('submit', async function (event) {
+                event.preventDefault(); // Prevent default form submission
+
+                // Get the input values from the form
+                const firstname = document.getElementById('firstname').value;
+                const lastname = document.getElementById('lastname').value;
+                const job = document.getElementById('job').value;
+                const bio = document.getElementById('bio').value;
+
+                try {
+                    const response = await fetch('/edit', {
+                        method: 'PUT',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ firstname, lastname, bio, job })
+                    });
+
+                    const data = await response.json();
+
+                    if (response.ok) {
+                        location.reload();
+                    } else {
+                        console.log('Error:', data.message || 'Failed to update profile');
+                    }
+                } catch (error) {
+                    console.log('Error:', error.message);
+                }
+            });
+
+
+            // Function to create and show the "Coming Soon" popup dynamically
+            function openComingSoonPopup() {
+                // Create popup background
+                const popup = document.createElement('div');
+                popup.id = 'comingSoonPopup';
+                popup.style.position = 'fixed';
+                popup.style.top = '0';
+                popup.style.left = '0';
+                popup.style.width = '100%';
+                popup.style.height = '100%';
+                popup.style.display = 'flex';
+                popup.style.justifyContent = 'center';
+                popup.style.alignItems = 'center';
+                popup.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+                popup.style.zIndex = '1000';
+
+                // Create popup content
+                const popupContent = document.createElement('div');
+                popupContent.style.backgroundColor = 'white';
+                popupContent.style.padding = '20px';
+                popupContent.style.borderRadius = '10px';
+                popupContent.style.boxShadow = '0px 0px 15px rgba(0, 0, 0, 0.3)';
+                popupContent.style.textAlign = 'center';
+
+                // Add the text for "Coming Soon!"
+                const message = document.createElement('h2');
+                message.innerText = 'Coming Soon!';
+                popupContent.appendChild(message);
+
+                // Add a close button
+                const closeButton = document.createElement('span');
+                closeButton.innerText = '×';
+                closeButton.style.position = 'absolute';
+                closeButton.style.top = '10px';
+                closeButton.style.right = '10px';
+                closeButton.style.fontSize = '20px';
+                closeButton.style.cursor = 'pointer';
+
+                // Close the popup when the close button is clicked
+                closeButton.addEventListener('click', function () {
+                    document.body.removeChild(popup); // Remove popup from the DOM
+                });
+
+                // Close the popup when clicking outside the popup content
+                popup.addEventListener('click', function (event) {
+                    if (event.target === popup) { // Check if the click is on the popup background
+                        document.body.removeChild(popup); // Remove popup from the DOM
+                    }
+                });
+
+                popupContent.appendChild(closeButton);
+                popup.appendChild(popupContent);
+                document.body.appendChild(popup); // Add the popup to the body
+            }
+
+            // Add event listener to your button with id 'soon'
+            document.getElementById('soon').addEventListener('click', function () {
+                openComingSoonPopup();
+            });
+            const bioWithNewlines = user.bio.replace(/\n/g, '<br>');
+
+
+        </script>
 </body>
 
 </html>

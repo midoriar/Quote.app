@@ -26,7 +26,7 @@ const port = 3000;
 
 // Apply to protected routes
 app.get('*', checkUser);
-app.get('/', (req, res) => { res.render('home')});
+app.get('/', (req, res) => {res.render('home') });
 app.get('/main',requireAuth, (req, res) => { res.redirect('/main/quote') });
 app.get('/add_post',requireAuth, (req, res) => { res.render('add_post') });
 app.get('/account',requireAuth, (req, res) => {res.render('account')});

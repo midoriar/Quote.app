@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
-
 const userSchema = new mongoose.Schema({
     firstname: {
         type: String,
@@ -13,7 +12,7 @@ const userSchema = new mongoose.Schema({
         trim: true
     },
     email: {
-        type: String,
+        type: String, 
         required: true,
         unique: true,
         lowercase: true,
@@ -24,6 +23,16 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
         minlength: 6
+    },
+    bio: {
+        type: String,
+        default: 'add your bio...', // Starts empty, but can be updated later
+        trim: true
+    },
+    job:{
+        type: String,
+        default: 'add you job...', // Starts empty, but can be updated later
+        trim: true
     }
 }, {
     timestamps: true // Automatically creates 'createdAt' and 'updatedAt' fields

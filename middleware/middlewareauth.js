@@ -11,7 +11,8 @@ const requireAuth = (req, res, next) => {
         console.log(err.message);
         res.redirect('/login');
       } else {
-        console.log(decodedToken);
+        req.user = decodedToken; // Assign the decoded token (containing the user ID) to req.user
+        console.log(decodedToken); // This should contain the user's ID
         next();
       }
     });
@@ -19,6 +20,7 @@ const requireAuth = (req, res, next) => {
     res.redirect('/login');
   }
 };
+
 
 // check current user
 const checkUser = (req, res, next) => {
